@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>SmartNote</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/materialize.min.css') }}">
+<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/jquery.timepicker.css') }}">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <style>
+		
+		.note {
+			width:330px;
+    		height:300px;
+			background-color:ghostwhite;
+			
+			}
+		#T2{
+			width:427px;
+			height:432px;
+			border:1px #ccc solid;
+			background-color:#FFE9B3;
+			}
+		#blue{
+			width:330px;
+			height:35px;
+			background-color:#2A5D9F;
+			}
+	  	.space_white{
+			width:400px;
+			height:10px;
+			background-color:#D7ECFF;
+			}
+	</style>
+</head>
+<body>
+
+
+<div class="container">
+<div class = "col-md-offset-4 col-lg-offset-4col-xl-offset-4">
+  <h2><strong>My SmartNote</strong>&nbsp;</h2>
+	<div style="margin:0px auto">
+<ul class="nav nav-pills">
+    <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+	<li><a data-toggle="tab" href="#date">Date</a></li>
+    <li><a data-toggle="tab" href="#state">State</a></li>
+    <li><a data-toggle="tab" href="#note">Note</a></li>
+	<li><a data-toggle="tab" href="#alarm">Alarm</a></li>
+  </ul>
+	</div>
+  <div class="tab-content">
+	  
+    <div id="home" class="tab-pane fade active in">
+		<div class="space_white"></div>
+      <div style="width:600px;height:60px;"><span style="font-size:1.8em;">Welcome to your SmartNote！</span></div>
+      <div style="width:400px;height:20px;" align="center"><img src="{{ url_for('static', filename='images/animated-penguin-gif-1.gif') }}"></div>
+    </div>
+	  
+	 <div id="date" class="tab-pane fade">
+		 <div class="space_white"></div>
+		<div  style="width:330px;hight:95px;text-align: center;background-color:#2A5D9F;color:aliceblue;">
+		<div id="demo"></div>
+		<h4 id="demo2"><strong>0:55</strong></h4>
+		</div>
+        <div class="notification"> </div>
+        <div class="weather-container">
+            <div class="weather-icon">
+                <img src="{{ url_for('static', filename='images/icons/unknown.png') }}" alt="">
+            </div>
+            <div class="temperature-value">
+                <p>- °<span>C</span></p>
+            </div>
+            <div class="temperature-description">
+                <p> - </p>
+            </div>
+            <div class="location">
+                <p>-</p>
+            </div>
+        </div>
+    </div>
+	  
+    <div id="state" class="tab-pane fade">
+	<div class="space_white"></div>
+      <p style="width:330px;text-align: center;font-size:18px;">Set up your state now.</p>
+		<form action="{{ url_for('state_submit') }}" method="POST">
+		<div>
+  		<textarea style="width:330px;height:100px;background-color:ghostwhite;" id="state_txt" 
+		name="state_text"></textarea>
+		</div>
+		
+		<input class="btn btn-warning" type="submit" value="Submit" id="state_submit">
+		<input class="btn btn-primary" type="reset" value="Reset" id="state_reset">
+		</form>
+
+		
+    </div>
+	  
+    <div id="note" class="tab-pane fade">
+		<form action="{{ url_for('note_submit') }}" method="POST">
+      	
+		<div id="blue"></div>
+		
+		<div>
+  		<textarea class="note" id="note_txt" name="note_text"></textarea>
+		</div>
+		<input class="btn btn-warning" type="submit" value="Submit" id="note_submit"  >
+		<input class="btn btn-primary" type="reset" value="Reset" id="note_reset" >
+    	</form>
+	  </div>
+		
+	<div id="alarm" class="tab-pane fade">
+			<form action="{{ url_for('control_led') }}" method="POST">
+					<div class="control input-field">
+						<input id="alarm-input" type="text" class="validate" name="time_get">
+						<label for="alarm-input">Set Time</label>
+					</div>
+			
+				
+					<div class="control switch">
+						<label>
+							pi
+							<input type="checkbox" disabled id="alarm-btn" name="on_off">
+							<span class="lever"></span>
+							on
+						</label>
+					</div> 
+				
+						
+					<input class="btn btn-warning" type="submit" value="Pi_go" id="control_led" name="aaa">
+					
+			</form>		
+			
+
+		
+		
+    </div>
+  </div>
+</div>
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="{{ url_for('static', filename='js/materialize.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.timepicker.min.js') }}"
+></script>
+<script src="{{ url_for('static', filename='js/hammer.js') }}"></script>
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+<script src="{{ url_for('static', filename='js/alarm.js') }}"></script>
+<script src="{{ url_for('static', filename='js/stopwatch.js') }}"></script>
+<script src="{{ url_for('static', filename='js/timer.js') }}"></script>
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+<script src="{{ url_for('static', filename='js/Date.js') }}"></script>
+<script src="{{ url_for('static', filename='js/State.js') }}"></script>
+</body>
+</html>
