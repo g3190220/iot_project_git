@@ -35,6 +35,7 @@
 			height:10px;
 			background-color:#D7ECFF;
 			}
+		form{margin: 0px;}
 	</style>
 </head>
 <body>
@@ -42,13 +43,16 @@
 
 <div class="container">
 <div class = "col-md-offset-4 col-lg-offset-4col-xl-offset-4">
- <a href="{{ url_for('Go_back') }}"> 
-<h2><strong>My SmartNote</strong>&nbsp;</h2>
-</a>
+	<div style="text-align: center;width:402px;">
+ 		<a href="{{ url_for('Go_back') }}"> 
+			<h2 ><strong>My SmartNote</strong>&nbsp;<h2>
+		</a>
+	</div>
 	<div style="margin:0px auto">
 <ul class="nav nav-pills">
     <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
 	<li><a data-toggle="tab" href="#date">Date</a></li>
+	<li><a data-toggle="tab" href="#t_h">T&H</a></li>
     <li><a data-toggle="tab" href="#state">State</a></li>
     <li><a data-toggle="tab" href="#note">Note</a></li>
 	<li><a data-toggle="tab" href="#alarm">Alarm</a></li>
@@ -83,12 +87,16 @@
                 <p>-</p>
             </div>
         </div>
-    </div>
+	</div>
+	
+	<div id="t_h" class="tab-pane fade">
+		
+   </div>
 	  
     <div id="state" class="tab-pane fade">
 	<div class="space_white"></div>
       <p style="width:330px;text-align: center;font-size:18px;">Set up your state now.</p>
-		<form action="{{ url_for('state_submit') }}" method="POST">
+		<form action="{{ url_for('state_submit') }}" method="POST" style="margin:0px">
 		<div>
   		<textarea style="width:330px;height:100px;background-color:ghostwhite;" id="state_txt" 
 		name="state_text"></textarea>
@@ -102,7 +110,7 @@
     </div>
 	  
     <div id="note" class="tab-pane fade">
-		<form action="{{ url_for('note_submit') }}" method="POST">
+		<form action="{{ url_for('note_submit') }}" method="POST" style="margin:0px">
       	
 		<div id="blue"></div>
 		
