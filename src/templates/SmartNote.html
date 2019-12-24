@@ -36,6 +36,17 @@
 			background-color:#D7ECFF;
 			}
 		form{margin: 0px;}
+		.button {
+		font: bold 15px Arial;
+		text-decoration: none;
+		background-color: #EEEEEE;
+		color: #333333;
+		padding: 2px 6px 2px 6px;
+		border-top: 1px solid #CCCCCC;
+		border-right: 1px solid #333333;
+		border-bottom: 1px solid #333333;
+		border-left: 1px solid #CCCCCC;
+		}
 	</style>
 </head>
 <body>
@@ -90,6 +101,16 @@
 	</div>
 	
 	<div id="t_h" class="tab-pane fade">
+	<div class="space_white"></div>
+	<div>
+		<div style="width:400px;height:95px;text-align: center;background-color:#2A5D9F;color:aliceblue;">
+		<p> TEMPERATURE   :  {{ temp }} oC</p>
+		<p> HUMIDITY (Rel.) :  {{ hum }} %</p>
+		<p>Last Sensors Reading: {{ time }}</p>
+		</div>
+		<div class="space_white"></div>
+		<a href="/t_h_data" class="button">REFRESH</a>
+	</div>
 		
    </div>
 	  

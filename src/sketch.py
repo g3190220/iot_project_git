@@ -8,6 +8,8 @@ from flask import Flask,flash, render_template,request,jsonify
 from werkzeug.datastructures import CombinedMultiDict, MultiDict
 import datetime
 import RPi.GPIO as GPIO
+import time
+import Adafruit_DHT
 
 app = Flask(__name__)      
 
@@ -18,6 +20,25 @@ def Hello():
 @app.route('/Go_back/')
 def Go_back():
     return render_template('SmartNote.html')
+# get data from DHT sensor
+def getDHTdata():
+    DHT22Sensor = Adafruit_DHT.DHT22
+    DHTpin = 4
+    hum, temp = Adafruit_DHT.read_retry(DHT22Sensor, DHTpin)
+    if hum is not None and temp is not None:
+        hum = round(hum)
+        temp = round(temp, 1)
+    return temp, hum
+@app.route('/t_h_data/')
+def t_h_submit():
+    timeNow = time.asctime( time.localtime(time.time()) )
+    temp, hum = getDHTdata()
+    templateData = {
+        'time': timeNow,
+        'temp': temp,
+        'hum' : hum
+    }
+    return render_template('SmartNote.html',**templateData)
 
 @app.route('/state_submit/', methods=['GET', 'POST'])
 
@@ -37,24 +58,29 @@ def note_submit():
 @app.route('/control_led/', methods=['GET', 'POST'])  
 def control_led():
     # blinking function
-    #def blink(pin):
-        #GPIO.output(pin,GPIO.HIGH)
-        #ime.sleep(1)
-        #GPIO.output(pin,GPIO.LOW)
-        #time.sleep(1)
-        #return
+    def blink(pin):
+        GPIO.output(pin,GPIO.HIGH)
+        time.sleep(1)
+        GPIO.output(pin,GPIO.LOW)
+        time.sleep(1)
+        return
+    GPIO.setmode(GPIO.BCM)
     if request.method == 'POST':
         #GPIO.setmode(GPIO.BCM)
         #GPIO.setup(12, GPIO.OUT)
         time_=request.form.get("time_get")
         flag=1
         print('You turn on your pi alarm!')
+        GPIO.setup(18, GPIO.OUT)
         while flag:
            now = datetime.datetime.now()
            now_c=now.strftime("%-I:%M%P")
            if time_== now_c:
                 print("time's up!")
                 flag=0
+                for i in range(0,5):
+                    blink(18)
+                GPIO.cleanup()
                 return render_template('SmartNote.html')         
         #print('It is %s'%(now_c))
         #print('our alarm is %s'%(time_))
