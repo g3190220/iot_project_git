@@ -33,14 +33,16 @@ try:
     
 
    
+    
+    # 24h update 
+    time_image = Image.new('1', (epd.height, epd.width), 255)
+    time_draw = ImageDraw.Draw(time_image)
     #paste thermometer image
     logging.info("4.read bmp file on window")
     bmp = Image.open(os.path.join(picdir, 'thermometer.bmp'))
     bmp.thumbnail( (64,64) )
+    #date,week,time
     time_image.paste(bmp, (140,0))
-    # 24h update 
-    time_image = Image.new('1', (epd.height, epd.width), 255)
-    time_draw = ImageDraw.Draw(time_image)
     time_now = datetime.datetime.now()
     date_string = time_now.strftime('%Y-%m-%d')
     week_string = [u'MON',u'TUE',u'WED',u'THU',u'FRI',u'SAT',u'SUN'][time_now.isoweekday() - 1]
