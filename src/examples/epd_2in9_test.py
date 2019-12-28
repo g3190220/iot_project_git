@@ -30,11 +30,7 @@ try:
     font24 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 24)
     font18 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 18)
 
-    #paste thermometer image
-    logging.info("4.read bmp file on window")
-    bmp = Image.open(os.path.join(picdir, 'thermometer.bmp'))
-    bmp.thumbnail( (128,128) )
-    time_image.paste(bmp, (13,0))
+    
 
     # 24h update 
     time_now = datetime.datetime.now()
@@ -58,8 +54,13 @@ try:
         time_draw.text((10, 10), time.strftime('%H:%M:%S'), font = font24, fill = 0)
         newimage = time_image.crop([10, 10, 120, 50])
         time_image.paste(newimage, (10,10))  
+
         epd.display(epd.getbuffer(time_image))
-        
+        #paste thermometer image
+        logging.info("4.read bmp file on window")
+        bmp = Image.open(os.path.join(picdir, 'thermometer.bmp'))
+        bmp.thumbnail( (128,128) )
+        time_image.paste(bmp, (130,0))        
         num = num + 1
         if(num == 10):
             break
