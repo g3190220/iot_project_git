@@ -106,13 +106,6 @@ def control_led():
         #print('It is %s'%(now_c))
         #print('our alarm is %s'%(time_))
         #return render_template('SmartNote.html')
-           
-if __name__ == '__main__':
-    app.secret_key='12345'
-    app.debug=True
-    app.run(host='0.0.0.0',port=5000,threaded=True)    # 執行我們的伺服器！
-
-
 logging.basicConfig(level=logging.DEBUG)
 
 try:
@@ -175,4 +168,9 @@ except KeyboardInterrupt:
     logging.info("ctrl + c:")
     epd2in9.epdconfig.module_exit()
     exit()
+           
+if __name__ == '__main__':
+    app.secret_key='12345'
+    app.debug=True
+    app.run(host='0.0.0.0',port=5000,threaded=True)    # 執行我們的伺服器！
 
