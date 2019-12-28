@@ -46,6 +46,7 @@ try:
     epd.init(epd.lut_partial_update)    
     epd.Clear(0xFF)
     # 24h update 
+    
     time_image = Image.new('1', (epd.height, epd.width), 255)
     time_black = Image.new('1', (138, epd.height), 0)
     time_draw = ImageDraw.Draw(time_image)
@@ -69,14 +70,14 @@ try:
     time_draw.text((143, 20), "Temp: 25.8°C", font = font18, fill = 0)
     time_draw.text((143, 53), "Hum: 65.8%", font = font18, fill = 0)
     num=0
+    epd.display(epd.getbuffer(time_image))
     # partial update
     logging.info("5.show time")
     while (True):
         time_draw_black.rectangle((10, 10, 120, 50), fill = 0)
         time_draw_black.text((10, 10), time.strftime('%H:%M:%S'), font = font24, fill = 255)
-        newimage = time_image.crop([10, 10, 120, 50])
-        time_image.paste(newimage, (10,10))  
-        epd.display(epd.getbuffer(time_image))
+        newimage = time_black.crop([10, 10, 120, 50])
+        time_black.paste(newimage, (10,10))  
         epd.display(epd.getbuffer(time_black))
         num = num + 1
         if(num == 10):
