@@ -47,7 +47,7 @@ try:
     time_draw.rectangle((50,50,50,50), fill = 0)
     time_draw.text((10, 50), date_string, font = font24, fill = 0)
     time_draw.text((10, 90), week_string, font = font24, fill = 0)
-    time_draw.line([(0.33 * epd.height, 0), ( 0.33 * epd.width,epd.height)],
+    time_draw.line([(138, 0), (138,epd.height)],
     fill = 0, width = 3)
 
     num=0
