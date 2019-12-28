@@ -44,7 +44,7 @@ try:
     time_now = datetime.datetime.now()
     date_string = time_now.strftime('%Y-%m-%d')
     week_string = [u'MON',u'TUE',u'WED',u'THU',u'FRI',u'SAT',u'SUN'][time_now.isoweekday() - 1]
-    time_draw.rectangle((10,50), fill = 0)
+    time_draw.rectangle((10,50,0,0), fill = 0)
     time_draw.text((10, 50), date_string, font = font24, fill = 255)
     time_draw.text((10, 90), week_string, font = font24, fill = 0)
     time_draw.line([0, 0.33 * epd.height, epd.width, 0.33 * epd.height],\
