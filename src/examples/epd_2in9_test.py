@@ -21,32 +21,34 @@ logging.basicConfig(level=logging.DEBUG)
 
 try:
     logging.info("epd2in9 Demo")
-    
     epd = epd2in9.EPD()
     logging.info("init and Clear")
-    epd.init(epd.lut_full_update)
+    epd.init(epd.lut_partial_update)    
     epd.Clear(0xFF)
+    #epd.init(epd.lut_full_update)
+    #epd.Clear(0xFF)
     
     font24 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 24)
     font18 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 18)
 
    
+    
+    # 24h update 
+    time_image = Image.new('1', (epd.height, epd.width), 255)
+    time_draw = ImageDraw.Draw(time_image)
     #paste thermometer image
     logging.info("4.read bmp file on window")
     bmp = Image.open(os.path.join(picdir, '123.bmp'))
     bmp.thumbnail( (64,64) )
+    #date,week,time
     time_image.paste(bmp, (140,0))
-
-    # 24h update 
-    time_image = Image.new('1', (epd.height, epd.width), 255)
-    time_draw = ImageDraw.Draw(time_image)
     time_now = datetime.datetime.now()
     date_string = time_now.strftime('%Y-%m-%d')
     week_string = [u'MON',u'TUE',u'WED',u'THU',u'FRI',u'SAT',u'SUN'][time_now.isoweekday() - 1]
     time_draw.text((10, 50), date_string, font = font24, fill = 0)
     time_draw.text((10, 90), week_string, font = font24, fill = 0)
-
-# partial update
+    num=0
+    # partial update
     logging.info("5.show time")
     while (True):
         time_draw.rectangle((10, 10, 120, 50), fill = 255)
