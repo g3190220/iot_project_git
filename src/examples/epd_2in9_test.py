@@ -30,10 +30,17 @@ try:
     font24 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 24)
     font18 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 18)
 
+    #paste thermometer image
+    logging.info("4.read bmp file on window")
+    bmp = Image.open(os.path.join(picdir, 'thermometer.bmp'))
+    bmp.thumbnail( (128,128) )
+    time_image.paste(bmp, (13,0))
+
     # 24h update 
     time_now = datetime.datetime.now()
     date_string = time_now.strftime('%Y-%m-%d')
     week_string = [u'MON',u'TUE',u'WED',u'THU',u'FRI',u'SAT',u'SUN'][time_now.isoweekday() - 1]
+
 
     
     
