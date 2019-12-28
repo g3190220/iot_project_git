@@ -63,9 +63,9 @@ try:
     time_draw.line([(138, 0), (138,epd.height)],
     fill = 0, width = 3)
     #溫溼度計
-    temp, hum = getDHTdata()
-    time_draw.text((190, 24), "Temp:"+temp+"°C", font = font24, fill = 0)
-    time_draw.text((190, 49), "Hum:"+hum+"%", font = font24, fill = 0)
+    #temp, hum = getDHTdata()
+    time_draw.text((190, 24), "Temp:25.8°C", font = font24, fill = 0)
+    time_draw.text((190, 49), "Hum:65.8%", font = font24, fill = 0)
     num=0
     # partial update
     logging.info("5.show time")
