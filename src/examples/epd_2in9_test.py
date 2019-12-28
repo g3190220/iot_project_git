@@ -58,14 +58,14 @@ try:
     date_string = time_now.strftime('%Y-%m-%d')
     week_string = [u'MON',u'TUE',u'WED',u'THU',u'FRI',u'SAT',u'SUN'][time_now.isoweekday() - 1]
     time_draw.rectangle((50,50,50,50), fill = 0)
-    time_draw.text((10, 50), date_string, font = font24, fill = 0)
+    time_draw.text((10, 50), date_string, font = font18, fill = 0)
     time_draw.text((10, 90), week_string, font = font18, fill = 0)
     time_draw.line([(138, 0), (138,epd.height)],
     fill = 0, width = 3)
     #溫溼度計
     #temp, hum = getDHTdata()
-    time_draw.text((160, 20), "Temp: 25.8°C", font = font18, fill = 0)
-    time_draw.text((160, 53), "Hum: 65.8%", font = font18, fill = 0)
+    time_draw.text((143, 20), "Temp: 25.8°C", font = font18, fill = 0)
+    time_draw.text((143, 53), "Hum: 65.8%", font = font18, fill = 0)
     num=0
     # partial update
     logging.info("5.show time")
