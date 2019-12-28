@@ -15,6 +15,19 @@ import traceback
 import datetime
 import json
 
+import Adafruit_DHT
+import RPi.GPIO as GPIO
+
+# get data from DHT sensor
+def getDHTdata():
+    DHT22Sensor = Adafruit_DHT.DHT22
+    DHTpin = 4
+    hum, temp = Adafruit_DHT.read_retry(DHT22Sensor, DHTpin)
+    if hum is not None and temp is not None:
+        hum = round(hum)
+        temp = round(temp, 1)
+    return temp, hum
+
 
 
 logging.basicConfig(level=logging.DEBUG)
@@ -49,7 +62,10 @@ try:
     time_draw.text((10, 90), week_string, font = font18, fill = 0)
     time_draw.line([(138, 0), (138,epd.height)],
     fill = 0, width = 3)
-
+    #溫溼度計
+    temp, hum = getDHTdata()
+    time_draw.text((190, 24), "Temp:"+temp+"°C", font = font24, fill = 0)
+    time_draw.text((190, 49), "Hum:"+hum+"%", font = font24, fill = 0)
     num=0
     # partial update
     logging.info("5.show time")
