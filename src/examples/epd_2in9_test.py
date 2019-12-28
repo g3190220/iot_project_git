@@ -38,16 +38,16 @@ try:
     #paste thermometer image
     logging.info("4.read bmp file on window")
     bmp = Image.open(os.path.join(picdir, '2in13d.bmp'))
-    bmp.thumbnail( (159,78) )
+    bmp.thumbnail( (106,52) )
     time_image.paste(bmp, (140,90))
     #date,week,time
     time_now = datetime.datetime.now()
     date_string = time_now.strftime('%Y-%m-%d')
     week_string = [u'MON',u'TUE',u'WED',u'THU',u'FRI',u'SAT',u'SUN'][time_now.isoweekday() - 1]
-    
-    time_draw.text((10, 50), date_string, font = font24, fill = 255)
-    time_draw.text((10, 90), week_string, font = font24, fill = 255)
-    time_draw.line([0, 0.33 * epd.width, epd.height, 0.33 * epd.width],\
+    time_draw.rectangle((50,50,50,50), fill = 0)
+    time_draw.text((10, 50), date_string, font = font24, fill = 0)
+    time_draw.text((10, 90), week_string, font = font24, fill = 0)
+    time_draw.line([(0.33 * epd.height, 0), ( 0.33 * epd.width,epd.height)],
     fill = 0, width = 3)
 
     num=0
