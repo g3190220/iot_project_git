@@ -57,7 +57,7 @@ try:
     time_now = datetime.datetime.now()
     date_string = time_now.strftime('%Y-%m-%d')
     week_string = [u'MONDAY',u'TUESDAY',u'WEDNESDAY',u'THUESDAY',u'FRIDAY',u'SATURDAY',u'SUNDAY'][time_now.isoweekday() - 1]
-    time_draw.text((10, 65), date_string, font = font18, fill = 0)
+    time_draw.text((10, 70), date_string, font = font18, fill = 0)
     time_draw.text((10, 95), week_string, font = font18, fill = 0)
     time_draw.line([(138, 0), (138,epd.height)],
     fill = 0, width = 3)
@@ -69,9 +69,9 @@ try:
     # partial update
     logging.info("5.show time")
     while (True):
-        time_draw.rectangle((10, 10, 120, 50), fill = 0)
+        time_draw.rectangle((13, 10, 120, 50), fill = 0)
         time_draw.text((13, 15), time.strftime('%H:%M:%S'), font = font24, fill = 255)
-        newimage = time_image.crop([10, 10, 120, 50])
+        newimage = time_image.crop([13, 10, 120, 50])
         time_image.paste(newimage, (13,15))  
         epd.display(epd.getbuffer(time_image))
         num = num + 1
