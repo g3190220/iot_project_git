@@ -95,7 +95,7 @@ def note_submit():
         epd.Clear(0xFF)
         #放插圖
         note_image = Image.new('1', (epd.height, epd.width), 255)
-        note_draw = ImageDraw.Draw(state_image)
+        note_draw = ImageDraw.Draw(note_image)
         bmp = Image.open(os.path.join(picdir, '2in13d.bmp'))
         bmp.thumbnail( (106,52) )
         note_image.paste(bmp, (180,90))
