@@ -26,6 +26,7 @@ import json
 
 import doremi
 
+epd = epd2in9.EPD()
 font24 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 24)
 font18 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 18)
 
@@ -65,13 +66,13 @@ def state_submit():
         result= request.form['state_text']
         #state update
         logging.info("epd2in9 Demo")
-        epd = epd2in9.EPD()
         logging.info("init and Clear")
-        epd.init(epd.lut_partial_update)    
+        epd.init(epd.lut_full_update)    
         epd.Clear(0xFF)
         state_image = Image.new('1', (epd.height, epd.width), 255)
         state_draw = ImageDraw.Draw(state_image)
         state_draw.text((10, 10), "HOW_ARE_YOU", font = font18, fill = 0)
+        epd.display(epd.getbuffer(state_image))
     return render_template('SmartNote.html')
    
 
