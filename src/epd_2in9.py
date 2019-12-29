@@ -28,12 +28,10 @@ def getDHTdata():
         temp = round(temp, 1)
     return temp, hum
 
+logging.basicConfig(level=logging.DEBUG)
 
-def show_epd():
-    logging.basicConfig(level=logging.DEBUG)
-
-    try:
-        logging.info("epd2in9 Demo")
+try:
+ logging.info("epd2in9 Demo")
         epd = epd2in9.EPD()
         logging.info("init and Clear")
         epd.init(epd.lut_full_update)
