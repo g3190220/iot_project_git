@@ -80,7 +80,7 @@ def note_submit():
 @app.route('/control_led/', methods=['GET', 'POST'])  
 def control_led():
     # buzer function
-    def buzer(pin):
+    def buzzer(pin):
         GPIO.output(pin,GPIO.HIGH)
         time.sleep(8)
         GPIO.output(pin,GPIO.LOW)
