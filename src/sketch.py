@@ -39,6 +39,7 @@ def Hello():
     return render_template('SmartNote.html')
 @app.route('/Go_back/')
 def Go_back():
+    os.system("python epd_2in9.py")
     return render_template('SmartNote.html')
 # get data from DHT sensor
 def getDHTdata():
