@@ -37,11 +37,9 @@ app = Flask(__name__)
 
 def Hello():
     return render_template('SmartNote.html')
-    epd_2in9.show_time()
 @app.route('/Go_back/')
 def Go_back():
     return render_template('SmartNote.html')
-    epd_2in9.show_time()
 # get data from DHT sensor
 def getDHTdata():
     DHT22Sensor = Adafruit_DHT.DHT22
