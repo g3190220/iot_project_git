@@ -79,12 +79,11 @@ def note_submit():
 
 @app.route('/control_led/', methods=['GET', 'POST'])  
 def control_led():
-    # blinking function
-    def blink(pin):
+    # buzer function
+    def buzer(pin):
         GPIO.output(pin,GPIO.HIGH)
-        time.sleep(1)
+        time.sleep(8)
         GPIO.output(pin,GPIO.LOW)
-        time.sleep(1)
         return
     GPIO.setmode(GPIO.BCM)
     if request.method == 'POST':
@@ -100,8 +99,7 @@ def control_led():
            if time_== now_c:
                 print("time's up!")
                 flag=0
-                for i in range(0,5):
-                    blink(18)
+                buzzer(18)
                 GPIO.cleanup()
                 return render_template('SmartNote.html')         
         #print('It is %s'%(now_c))
