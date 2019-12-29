@@ -92,4 +92,3 @@ def show_epd():
         logging.info("ctrl + c:")
         epd2in9.epdconfig.module_exit()
         exit()
-
