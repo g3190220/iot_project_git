@@ -62,6 +62,8 @@ def state_submit():
     if request.method == 'POST': 
         result= request.form['state_text']
         #state update
+        logging.info("epd2in9 Demo")
+        epd = epd2in9.EPD()
         logging.info("init and Clear")
         epd.init(epd.lut_full_update)   
         epd.Clear(0xFF)

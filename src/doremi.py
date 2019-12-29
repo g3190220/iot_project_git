@@ -39,5 +39,3 @@ def doReMi():
    
     p.stop()
     GPIO.cleanup()
-
-doReMi()
