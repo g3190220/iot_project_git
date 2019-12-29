@@ -24,6 +24,8 @@ from PIL import Image,ImageDraw,ImageFont
 import traceback
 import json
 
+import doremi
+
 
 app = Flask(__name__)      
 
@@ -79,27 +81,19 @@ def note_submit():
 
 @app.route('/control_led/', methods=['GET', 'POST'])  
 def control_led():
-    # buzer function
-    def buzzer(pin):
-        GPIO.output(pin,GPIO.HIGH)
-        time.sleep(8)
-        GPIO.output(pin,GPIO.LOW)
-        return
-    GPIO.setmode(GPIO.BCM)
     if request.method == 'POST':
         #GPIO.setmode(GPIO.BCM)
         #GPIO.setup(12, GPIO.OUT)
         time_=request.form.get("time_get")
         flag=1
         print('You turn on your pi alarm!')
-        GPIO.setup(18, GPIO.OUT)
         while flag:
            now = datetime.datetime.now()
            now_c=now.strftime("%-I:%M%P")
            if time_== now_c:
                 print("time's up!")
                 flag=0
-                buzzer(18)
+                doremi.doReMi()
                 GPIO.cleanup()
                 return render_template('SmartNote.html')         
         #print('It is %s'%(now_c))
