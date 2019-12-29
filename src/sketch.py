@@ -25,7 +25,7 @@ import traceback
 import json
 
 import doremi
-
+import epd_2in9
 epd = epd2in9.EPD()
 font24 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 24)
 font18 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 18)
@@ -39,7 +39,6 @@ def Hello():
 @app.route('/Go_back/')
 def Go_back():
     return render_template('SmartNote.html')
-    os.system("python epd_2in9.py")
 # get data from DHT sensor
 def getDHTdata():
     DHT22Sensor = Adafruit_DHT.DHT22
