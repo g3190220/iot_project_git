@@ -25,6 +25,7 @@ import traceback
 import json
 
 import doremi
+import epd_2in9
 
 epd = epd2in9.EPD()
 font24 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 24)
@@ -36,9 +37,11 @@ app = Flask(__name__)
 
 def Hello():
     return render_template('SmartNote.html')
+    epd_2in9.show_time()
 @app.route('/Go_back/')
 def Go_back():
     return render_template('SmartNote.html')
+    epd_2in9.show_time()
 # get data from DHT sensor
 def getDHTdata():
     DHT22Sensor = Adafruit_DHT.DHT22
@@ -88,7 +91,7 @@ def state_submit():
 def note_submit(): 
     if request.method == 'POST': 
         result= request.form['note_text']
-        #state update
+        #note update
         logging.info("epd2in9 Demo")
         logging.info("init and Clear")
         epd.init(epd.lut_full_update)    
@@ -123,7 +126,7 @@ def control_led():
                 flag=0
                 doremi.doReMi()
                 GPIO.cleanup()
-                return render_template('SmartNote.html')         
+            return render_template('SmartNote.html')         
         #print('It is %s'%(now_c))
         #print('our alarm is %s'%(time_))
         #return render_template('SmartNote.html')
