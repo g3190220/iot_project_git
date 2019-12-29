@@ -67,11 +67,11 @@ def state_submit():
         logging.info("epd2in9 Demo")
         epd = epd2in9.EPD()
         logging.info("init and Clear")
-        epd.init(epd.lut_full_update)   
+        epd.init(epd.lut_partial_update)    
         epd.Clear(0xFF)
         state_image = Image.new('1', (epd.height, epd.width), 255)
         state_draw = ImageDraw.Draw(state_image)
-        state_draw.text((10, 10), result, font = font18, fill = 0)
+        state_draw.text((10, 10), "HOW_ARE_YOU", font = font18, fill = 0)
     return render_template('SmartNote.html')
    
 
