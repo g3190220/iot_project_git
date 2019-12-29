@@ -76,7 +76,7 @@ def state_submit():
         bmp.thumbnail( (106,52) )
         state_image.paste(bmp, (175,90))
         #畫直線
-        time_draw.rectangle((10, 10, 120, 50), fill = 0)
+        state_draw.rectangle((10, 10, 120, 50), fill = 0)
         state_draw.text((10, 15), "My STATE", font = font18, fill = 255)
         #state_draw.line([(0, 12), (epd.width,12)],fill = 0, width = 3)
         state_draw.text((10, 50), result, font = font18, fill = 0)
