@@ -77,8 +77,8 @@ def state_submit():
         state_image.paste(bmp, (170,90))
         #畫直線
         state_draw.text((10, 10), "My STATE", font = font18, fill = 0)
-        state_draw.line([(0, 12), (epd.width,12)],
-        state_draw.text((10, 50), "My STATE", font = font18, fill = 0)
+        state_draw.line([(0, 12), (epd.width,12)],fill = 0, width = 3)
+        state_draw.text((10, 50), result, font = font18, fill = 0)
         epd.display(epd.getbuffer(state_image))
     return render_template('SmartNote.html')
    
