@@ -39,7 +39,7 @@ def Hello():
 @app.route('/Go_back/')
 def Go_back():
     return render_template('SmartNote.html')
-    import epd_2in9
+    os.system("python epd_2in9.py")
 # get data from DHT sensor
 def getDHTdata():
     DHT22Sensor = Adafruit_DHT.DHT22
