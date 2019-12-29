@@ -71,7 +71,13 @@ def state_submit():
         epd.Clear(0xFF)
         state_image = Image.new('1', (epd.height, epd.width), 255)
         state_draw = ImageDraw.Draw(state_image)
-        state_draw.text((10, 10), result, font = font18, fill = 0)
+        bmp = Image.open(os.path.join(picdir, '2in13d.bmp'))
+        bmp.thumbnail( (106,52) )
+        time_image.paste(bmp, (170,90))
+        state_draw.text((10, 10), "My STATE", font = font18, fill = 0)
+        #畫直線
+        time_draw.line([(0, 12), (epd.width,12)],
+        state_draw.text((10, 50), "My STATE", font = font18, fill = 0)
         epd.display(epd.getbuffer(state_image))
     return render_template('SmartNote.html')
    
