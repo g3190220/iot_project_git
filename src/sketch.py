@@ -26,6 +26,8 @@ import json
 
 import doremi
 
+font24 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 24)
+font18 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 18)
 
 app = Flask(__name__)      
 
