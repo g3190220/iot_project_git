@@ -63,14 +63,13 @@ def state_submit():
         result= request.form['state_text']
         
     return render_template('SmartNote.html')
-    # state update
-    #logging.info("init and Clear")
-    #epd.init(epd.lut_full_update)   
-    #epd.Clear(0xFF)
-     
-    #state_image = Image.new('1', (epd.height, epd.width), 255)
-    #state_draw = ImageDraw.Draw(state_image)
-    #state_draw.text((10, 10), result, font = font18, fill = 0)
+    #state update
+    logging.info("init and Clear")
+    epd.init(epd.lut_full_update)   
+    epd.Clear(0xFF)
+    state_image = Image.new('1', (epd.height, epd.width), 255)
+    state_draw = ImageDraw.Draw(state_image)
+    state_draw.text((10, 10), result, font = font18, fill = 0)
 
 @app.route('/note_submit/', methods=['GET', 'POST'])
 def note_submit(): 
