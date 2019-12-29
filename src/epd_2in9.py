@@ -58,7 +58,7 @@ try:
     time_draw.text((10, 70), date_string, font = font18, fill = 0)
     time_draw.text((10, 95), week_string, font = font18, fill = 0)
     #畫直線
-    time_draw.line([(135), 0), (138,epd.height)],
+    time_draw.line([(135, 0), (135,epd.height)],
     fill = 0, width = 3)
     #溫溼度計
     #temp, hum = getDHTdata()
