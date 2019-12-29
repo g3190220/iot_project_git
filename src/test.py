@@ -1,0 +1,2 @@
+import doremi
+doremi.doReMi()
