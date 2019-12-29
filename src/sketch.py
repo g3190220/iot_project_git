@@ -126,7 +126,7 @@ def control_led():
                 flag=0
                 doremi.doReMi()
                 GPIO.cleanup()
-            return render_template('SmartNote.html')         
+                return render_template('SmartNote.html')         
         #print('It is %s'%(now_c))
         #print('our alarm is %s'%(time_))
         #return render_template('SmartNote.html')
