@@ -74,7 +74,7 @@ def state_submit():
         state_draw = ImageDraw.Draw(state_image)
         bmp = Image.open(os.path.join(picdir, '2in13d.bmp'))
         bmp.thumbnail( (106,52) )
-        state_image.paste(bmp, (175,90))
+        state_image.paste(bmp, (180,90))
         #畫直線
         state_draw.rectangle((10, 10, 100, 40), fill = 0)
         state_draw.text((15, 15), "My STATE", font = font18, fill = 255)
@@ -88,7 +88,23 @@ def state_submit():
 def note_submit(): 
     if request.method == 'POST': 
         result= request.form['note_text']
-        print(result)
+        #state update
+        logging.info("epd2in9 Demo")
+        logging.info("init and Clear")
+        epd.init(epd.lut_full_update)    
+        epd.Clear(0xFF)
+        #放插圖
+        note_image = Image.new('1', (epd.height, epd.width), 255)
+        note_draw = ImageDraw.Draw(state_image)
+        bmp = Image.open(os.path.join(picdir, '2in13d.bmp'))
+        bmp.thumbnail( (106,52) )
+        note_image.paste(bmp, (180,90))
+        #畫直線
+        note_draw.rectangle((10, 10, 100, 40), fill = 0)
+        note_draw.text((15, 15), "My NOTE", font = font18, fill = 255)
+        #state_draw.line([(0, 12), (epd.width,12)],fill = 0, width = 3)
+        note_draw.text((10, 50), result, font = font18, fill = 0)
+        epd.display(epd.getbuffer(note_image))
     return render_template('SmartNote.html')
 
 @app.route('/control_led/', methods=['GET', 'POST'])  
