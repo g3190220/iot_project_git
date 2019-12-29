@@ -69,14 +69,15 @@ def state_submit():
         logging.info("init and Clear")
         epd.init(epd.lut_full_update)    
         epd.Clear(0xFF)
+        #放插圖
         state_image = Image.new('1', (epd.height, epd.width), 255)
         state_draw = ImageDraw.Draw(state_image)
         bmp = Image.open(os.path.join(picdir, '2in13d.bmp'))
         bmp.thumbnail( (106,52) )
-        time_image.paste(bmp, (170,90))
-        state_draw.text((10, 10), "My STATE", font = font18, fill = 0)
+        state_image.paste(bmp, (170,90))
         #畫直線
-        time_draw.line([(0, 12), (epd.width,12)],
+        state_draw.text((10, 10), "My STATE", font = font18, fill = 0)
+        state_draw.line([(0, 12), (epd.width,12)],
         state_draw.text((10, 50), "My STATE", font = font18, fill = 0)
         epd.display(epd.getbuffer(state_image))
     return render_template('SmartNote.html')
