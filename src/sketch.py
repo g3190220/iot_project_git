@@ -25,7 +25,7 @@ import traceback
 import json
 
 import doremi
-import epd_2in9
+
 epd = epd2in9.EPD()
 font24 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 24)
 font18 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 18)
@@ -36,8 +36,10 @@ app = Flask(__name__)
 
 def Hello():
     return render_template('SmartNote.html')
-@app.route('/Go_back/')
+@app.route('/Go_back/', methods=['GET','POST'])
 def Go_back():
+    print("success")
+    import epd_2in9
     return render_template('SmartNote.html')
 # get data from DHT sensor
 def getDHTdata():
