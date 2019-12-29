@@ -38,8 +38,8 @@ def Hello():
     return render_template('SmartNote.html')
 @app.route('/Go_back/', methods=['GET','POST'])
 def Go_back():
-    return render_template('SmartNote.html')
     import epd_2in9
+    return render_template('SmartNote.html') 
     
 # get data from DHT sensor
 def getDHTdata():
@@ -117,6 +117,21 @@ def control_led():
         time_=request.form.get("time_get")
         flag=1
         print('You turn on your pi alarm!')
+        #alrm update
+        logging.info("epd2in9 Demo")
+        logging.info("init and Clear")
+        epd.init(epd.lut_full_update)    
+        epd.Clear(0xFF)
+        #放插圖
+        alarm_image = Image.new('1', (epd.height, epd.width), 255)
+        alarm_draw = ImageDraw.Draw(alarm_image)
+        bmp = Image.open(os.path.join(picdir, '2in13d.bmp'))
+        bmp.thumbnail( (106,52) )
+        alarm_image.paste(bmp, (180,90))
+        #畫直線
+        alarm_draw.text((15, 15),'You turn on your pi alarm!', font = font18, fill = 0)
+        alarm_draw.line([(0, 12), (epd.width,12)],fill = 0, width = 3)
+        epd.display(epd.getbuffer(alarm_image))
         while flag:
            now = datetime.datetime.now()
            now_c=now.strftime("%-I:%M%P")
