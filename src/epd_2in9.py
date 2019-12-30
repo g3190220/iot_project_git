@@ -64,7 +64,7 @@ try:
     temp, hum = getDHTdata()
     temp_val=str(temp)
     hum_val=str(hum)
-    time_draw.text((144, 19), "Temp: "+temp_val+" ℃", font = font18, fill = 0)
+    time_draw.text((144, 19), "Temp: "+temp_val+" °C", font = font18, fill = 0)
     time_draw.text((144, 55), "Hum: "+hum_val+" %", font = font18, fill = 0)
     num=0
     # partial update
