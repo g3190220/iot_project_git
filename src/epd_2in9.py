@@ -60,7 +60,7 @@ try:
     #畫直線
     time_draw.line([(135, 0), (135,epd.height)],
     fill = 0, width = 3)
-    while(true):
+    while(True):
         #溫溼度計
         temp, hum = getDHTdata()
         temp_val=str(temp)
