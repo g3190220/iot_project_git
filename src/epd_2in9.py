@@ -66,15 +66,14 @@ try:
         temp_val=str(temp)
         hum_val=str(hum)
 
-        time_draw.rectangle((200, 200, 225, 20), fill = 0)
-        time_draw.text((144, 19), "Temp: "+temp_val+" °C", font = font18, fill = 0)
-        newimage_1 = time_image.crop([200, 200, 225, 20])
+        time_draw.rectangle((190, 110, 260, 20), fill = 0)
+        time_draw.text((144, 19), "Temp: "+temp_val+" °C", font = font18, fill = 0) 
+        time_draw.text((144, 55), "Hum: "+hum_val+" %", font = font18, fill = 0)
+        newimage_1 = time_image.crop([190, 110, 260, 20])
         time_image.paste(newimage_1, (144, 19))  
 
-        time_draw.rectangle((200, 200, 225, 20), fill = 0)
-        time_draw.text((144, 55), "Hum: "+hum_val+" %", font = font18, fill = 0)
-        newimage_2 = time_image.crop([200, 200, 225, 20])
-        time_image.paste(newimage_2, (144, 55))  
+       
+
         num=0
         # partial update
         logging.info("5.show time")
