@@ -62,8 +62,8 @@ try:
     fill = 0, width = 3)
     #溫溼度計
     #temp, hum = getDHTdata()
-    time_draw.text((144, 19), "Temp: 25.8°C", font = font18, fill = 0)
-    time_draw.text((144, 55), "Hum: 65.8%", font = font18, fill = 0)
+    time_draw.text((144, 19), "Temp: "+temp+" ℃", font = font18, fill = 0)
+    time_draw.text((144, 55), "Hum: "+hun+" %", font = font18, fill = 0)
     num=0
     # partial update
     logging.info("5.show time")
