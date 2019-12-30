@@ -66,10 +66,10 @@ try:
         temp_val=str(temp)
         hum_val=str(hum)
 
-        time_draw.rectangle((195, 85, 240, 20), fill = 0)
-        time_draw.text((144, 19), "Temp: "+temp_val+" °C", font = font18, fill = 0) 
+        time_draw.rectangle((195, 85, 230, 20), fill = 0)
+        time_draw.text((144, 19), "Temp: "+temp_val+" *C", font = font18, fill = 0) 
         time_draw.text((144, 55), "Hum : "+hum_val+" %", font = font18, fill = 0)
-        newimage_1 = time_image.crop([195, 85, 240, 20])
+        newimage_1 = time_image.crop([195, 85, 230, 20])
         time_image.paste(newimage_1, (144, 19))  
 
        
