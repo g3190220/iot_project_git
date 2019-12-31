@@ -25,6 +25,7 @@ import traceback
 import json
 
 import doremi
+import epd_empty
 
 epd = epd2in9.EPD()
 font24 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 24)
@@ -38,8 +39,9 @@ def Hello():
     return render_template('SmartNote.html')
 @app.route('/Go_back/', methods=['GET','POST'])
 def Go_back():
-    import epd_2in9
     return render_template('SmartNote.html') 
+    print("go_back")
+    
     
 # get data from DHT sensor
 def getDHTdata():
