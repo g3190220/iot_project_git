@@ -39,9 +39,9 @@ def Hello():
     return render_template('SmartNote.html')
 @app.route('/Go_back/', methods=['GET','POST'])
 def Go_back():
-    return render_template('SmartNote.html') 
     print("go_back")
-    
+    return render_template('SmartNote.html') 
+    print("i am sajl")
     
 # get data from DHT sensor
 def getDHTdata():
