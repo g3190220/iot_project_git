@@ -18,7 +18,7 @@ import json
 import Adafruit_DHT
 import RPi.GPIO as GPIO
 
-
+font18 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 18)
 
 logging.basicConfig(level=logging.DEBUG)
 
