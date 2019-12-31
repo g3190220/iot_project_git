@@ -22,14 +22,14 @@ import RPi.GPIO as GPIO
 
 logging.basicConfig(level=logging.DEBUG)
 
-try:
-    logging.info("epd2in9 Demo")
-    epd = epd2in9.EPD()
-    logging.info("init and Clear")
-    epd.init(epd.lut_full_update)
-    epd.Clear(0xFF)
+
+logging.info("epd2in9 Demo")
+epd = epd2in9.EPD()
+logging.info("init and Clear")
+epd.init(epd.lut_full_update)
+epd.Clear(0xFF)
             
         
-    epd.init(epd.lut_partial_update)    
-    epd.Clear(0xFF)
+epd.init(epd.lut_partial_update)    
+epd.Clear(0xFF)
    
