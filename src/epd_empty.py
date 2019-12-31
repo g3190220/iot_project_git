@@ -28,8 +28,12 @@ epd = epd2in9.EPD()
 logging.info("init and Clear")
 epd.init(epd.lut_full_update)
 epd.Clear(0xFF)
+
+wakeup_image = Image.new('1', (epd.height, epd.width), 255)
+wakeup_draw = ImageDraw.Draw(wakeup_image)
+wakeup_draw.text((15, 15),'Times up!!', font = font18, fill = 0)
+wakeup_draw.line([(0, 12), (epd.width,12)],fill = 0, width = 3)
+epd.display(epd.getbuffer(wakeup_image))
             
-        
-epd.init(epd.lut_partial_update)    
-epd.Clear(0xFF)
+    
    
