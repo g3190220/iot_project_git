@@ -12,6 +12,7 @@ from waveshare_epd import epd2in9
 from PIL import Image,ImageDraw,ImageFont
 import traceback
 import json
+epd = epd2in9.EPD()
 
 TouchPin = 27
 
@@ -25,7 +26,6 @@ def loop():
 	while True:
 		if GPIO.input(TouchPin) == GPIO.LOW:
 			print("wait to touch...")
-			epd = epd2in9.EPD()
 			epd.init(epd.lut_full_update)    
             epd.Clear(0xFF)
 			wait_image = Image.new('1', (epd.height, epd.width), 255)
