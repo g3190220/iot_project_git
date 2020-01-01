@@ -62,6 +62,7 @@ def showtime():
         time_draw.line([(135, 0), (135,epd.height)],
         fill = 0, width = 3)
         while(True):
+            logging.info("check if it was touched")
             if GPIO.input(TouchPin) == GPIO.LOW:
                 while(True):
                     #溫溼度計
