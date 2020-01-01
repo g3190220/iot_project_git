@@ -60,36 +60,37 @@ def showtime():
         #畫直線
         time_draw.line([(135, 0), (135,epd.height)],
         fill = 0, width = 3)
-        while(True):
-            #溫溼度計
-            temp, hum = getDHTdata()
-            temp_val=str(temp)
-            hum_val=str(hum)
+        if GPIO.input(TouchPin) == GPIO.LOW:
+            while(True):
+                #溫溼度計
+                temp, hum = getDHTdata()
+                temp_val=str(temp)
+                hum_val=str(hum)
 
-            time_draw.rectangle((195, 85, 235, 20), fill = 255)
-            time_draw.text((144, 19), "Temp: "+temp_val+" *C", font = font18, fill = 0) 
-            time_draw.text((144, 55), "Hum : "+hum_val+" %", font = font18, fill = 0)
-            
-            newimage_1 = time_image.crop([195, 85, 235, 20])
-            time_image.paste(newimage_1, (144, 19))  
-
-            num=0
-            # partial update
-            logging.info("5.show time")
-            while (num<9):
-                time_draw.rectangle((10, 10, 120, 50), fill = 0)
-                time_draw.text((10, 15), time.strftime('%H:%M:%S'), font = font24, fill = 255)
-                newimage_3 = time_image.crop([10, 10, 120, 50])
-                time_image.paste(newimage_3, (10,15))  
-                epd.display(epd.getbuffer(time_image))
-                num=num+1
-                        
-        logging.info("Clear...")
-        epd.init(epd.lut_full_update)
-        epd.Clear(0xFF)
+                time_draw.rectangle((195, 85, 235, 20), fill = 255)
+                time_draw.text((144, 19), "Temp: "+temp_val+" *C", font = font18, fill = 0) 
+                time_draw.text((144, 55), "Hum : "+hum_val+" %", font = font18, fill = 0)
                 
-        logging.info("Goto Sleep...")
-        epd.sleep()
+                newimage_1 = time_image.crop([195, 85, 235, 20])
+                time_image.paste(newimage_1, (144, 19))  
+
+                num=0
+                # partial update
+                logging.info("5.show time")
+                while (num<9):
+                    time_draw.rectangle((10, 10, 120, 50), fill = 0)
+                    time_draw.text((10, 15), time.strftime('%H:%M:%S'), font = font24, fill = 255)
+                    newimage_3 = time_image.crop([10, 10, 120, 50])
+                    time_image.paste(newimage_3, (10,15))  
+                    epd.display(epd.getbuffer(time_image))
+                    num=num+1
+        else:           
+            logging.info("Clear...")
+            epd.init(epd.lut_full_update)
+            epd.Clear(0xFF)
+                    
+            logging.info("Goto Sleep...")
+            epd.sleep()
                 
     except IOError as e:
         logging.info(e)
@@ -99,5 +100,8 @@ def showtime():
         epd2in9.epdconfig.module_exit()
         exit()
 def close_epd():
-    print("no")
+     epd = epd2in9.EPD()
+     epd.init(epd.lut_full_update)
+     epd.Clear(0xFF)
+     epd.sleep()
             

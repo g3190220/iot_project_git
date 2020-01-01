@@ -11,12 +11,13 @@ def setup():
 def loop():
 	while True:
 		if GPIO.input(TouchPin) == GPIO.LOW:
-			epd_2in9.close_epd()
+			print("wait to touch...")
 			
 		else:
-			print ('you touch')
+			print ('you touched!')
 			epd_2in9.getDHTdata()
 			epd_2in9.showtime()
+			
 			
 
 def destroy():
