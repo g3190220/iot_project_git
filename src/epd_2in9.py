@@ -95,13 +95,13 @@ def showtime():
                 logging.info("Goto Sleep...")
                 epd.sleep()
                     
-        except IOError as e:
-            logging.info(e)
+    except IOError as e:
+        logging.info(e)
                     
-        except KeyboardInterrupt:    
-            logging.info("ctrl + c:")
-            epd2in9.epdconfig.module_exit()
-            exit()
+    except KeyboardInterrupt:    
+        logging.info("ctrl + c:")
+        epd2in9.epdconfig.module_exit()
+        exit()
 def close_epd():
      epd = epd2in9.EPD()
      epd.init(epd.lut_full_update)
