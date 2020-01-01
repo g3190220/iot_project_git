@@ -11,10 +11,10 @@ def setup():
 def loop():
 	while True:
 		if GPIO.input(TouchPin) == GPIO.LOW:
-			print 'you touch''
+			print ('you touch')
 			
 		else:
-			print 'no'
+			print ('no')
 			
 
 def destroy():
