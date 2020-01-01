@@ -61,10 +61,11 @@ def showtime():
         #畫直線
         time_draw.line([(135, 0), (135,epd.height)],
         fill = 0, width = 3)
-        while(True):
-            logging.info("check if it was touched")
-            if GPIO.input(TouchPin) == GPIO.LOW:
-                while(True):
+        
+        
+            while(True):
+                logging.info("check if it was touched")
+                if GPIO.input(TouchPin) == GPIO.LOW:
                     #溫溼度計
                     temp, hum = getDHTdata()
                     temp_val=str(temp)
@@ -73,7 +74,7 @@ def showtime():
                     time_draw.rectangle((195, 85, 235, 20), fill = 255)
                     time_draw.text((144, 19), "Temp: "+temp_val+" *C", font = font18, fill = 0) 
                     time_draw.text((144, 55), "Hum : "+hum_val+" %", font = font18, fill = 0)
-                    
+                        
                     newimage_1 = time_image.crop([195, 85, 235, 20])
                     time_image.paste(newimage_1, (144, 19))  
 
@@ -87,13 +88,14 @@ def showtime():
                         time_image.paste(newimage_3, (10,15))  
                         epd.display(epd.getbuffer(time_image))
                         num=num+1
-            else:           
-                logging.info("Clear...")
-                epd.init(epd.lut_full_update)
-                epd.Clear(0xFF)
-                        
-                logging.info("Goto Sleep...")
-                epd.sleep()
+                else:           
+                    logging.info("Clear...")
+                    epd.init(epd.lut_full_update)
+                    epd.Clear(0xFF)
+                                
+                    logging.info("Goto Sleep...")
+                    epd.sleep()
+                    exit()
                     
     except IOError as e:
         logging.info(e)
