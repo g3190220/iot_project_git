@@ -29,6 +29,7 @@ def getDHTdata():
     return temp, hum
 def showtime():
     logging.basicConfig(level=logging.DEBUG)
+    TouchPin = 27
 
     try:
         logging.info("epd2in9 Demo")
