@@ -25,7 +25,6 @@ import traceback
 import json
 
 import doremi
-import touch
 
 epd = epd2in9.EPD()
 font24 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 24)
@@ -155,6 +154,4 @@ if __name__ == '__main__':
     app.secret_key='12345'
     app.debug=True
     app.run(host='0.0.0.0',port=5000,threaded=True)    # 執行我們的伺服器！
-    touch.setup()
-    touch.loop()
 
