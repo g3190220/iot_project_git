@@ -36,10 +36,17 @@ def getDHTdata():
 def close_epd(channel):
     global loop
     loop = False
+    epd = epd2in9.EPD()
     logging.info("Clear...")
     epd = epd2in9.EPD()
+    font18 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 18)
     epd.init(epd.lut_full_update)
     epd.Clear(0xFF)
+	wait_image = Image.new('1', (epd.height, epd.width), 255)
+    wait_draw = ImageDraw.Draw(wait_image)
+    wait_draw.rectangle((10, 10, 100, 40), fill = 0)
+    wait_draw.text((15, 15), "do something...", font = font18, fill = 255)
+    epd.display(epd.getbuffer(wait_image))
     GPIO.remove_event_detect(channel)
    
          
