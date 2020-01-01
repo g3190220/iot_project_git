@@ -25,6 +25,7 @@ def destroy():
 
 if __name__ == '__main__':     # Program start from here
 	setup()
+	GPIO.add_event_detect(TouchPin, GPIO.RISING, callback=epd_2in9.close_epd, bouncetime=200)
 	try:
 		loop()
 	except KeyboardInterrupt:  # When 'Ctrl+C' is pressed, the child program destroy() will be  executed.

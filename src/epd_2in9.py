@@ -49,7 +49,7 @@ def close_epd(channel):
 def showtime():
     global loop
     logging.basicConfig(level=logging.DEBUG)
-    GPIO.add_event_detect(TouchPin, GPIO.RISING, callback=close_epd, bouncetime=200)
+    
 
     try:
         logging.info("epd2in9 Demo")
