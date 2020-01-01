@@ -17,7 +17,7 @@ def loop():
 			print ('you touched!')
 			epd_2in9.getDHTdata()
 			loop=True
-			epd_2in9.showtime(loop)
+			epd_2in9.showtime()
 			
 			
 
