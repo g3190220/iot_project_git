@@ -144,9 +144,8 @@ def control_led():
                 wakeup_draw = ImageDraw.Draw(wakeup_image)
                 bmp = Image.open(os.path.join(picdir, '999.bmp'))
                 bmp.thumbnail( (128,108) )
-                wakeup_image.paste(bmp, (50,50))
+                wakeup_image.paste(bmp, (66,40))
 
-                
                 wakeup_draw.text((15, 15),'Times up!!', font = font18, fill = 0)
                 wakeup_draw.line([(0, 12), (epd.width,12)],fill = 0, width = 3)
                 epd.display(epd.getbuffer(wakeup_image))
