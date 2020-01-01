@@ -106,7 +106,7 @@ def note_submit():
         note_draw.rectangle((10, 10, 125, 50), fill = 0)
         note_draw.text((15, 15), "My NOTE", font = font24, fill = 255)
         #state_draw.line([(0, 12), (epd.width,12)],fill = 0, width = 3)
-        note_draw.text((10, 60), result, font = font24, fill = 0)
+        note_draw.text((10, 60), result, font = font18, fill = 0)
         epd.display(epd.getbuffer(note_image))
     return render_template('SmartNote.html')
 
@@ -126,12 +126,13 @@ def control_led():
         #放插圖
         alarm_image = Image.new('1', (epd.height, epd.width), 255)
         alarm_draw = ImageDraw.Draw(alarm_image)
-        bmp = Image.open(os.path.join(picdir, '2in13d.bmp'))
-        bmp.thumbnail( (106,52) )
-        alarm_image.paste(bmp, (180,90))
+        bmp = Image.open(os.path.join(picdir, '777.bmp'))
+        bmp.thumbnail( (247.9,181.1) )
+        alarm_image.paste(bmp, (50,50))
         #畫直線
         alarm_draw.text((15, 15),'You turn on your pi alarm!', font = font18, fill = 0)
         alarm_draw.line([(0, 12), (epd.width,12)],fill = 0, width = 3)
+        
         epd.display(epd.getbuffer(alarm_image))
         while flag:
            now = datetime.datetime.now()
