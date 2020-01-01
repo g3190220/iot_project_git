@@ -25,14 +25,13 @@ def setup():
 def loop():
 	while True:
 		if GPIO.input(TouchPin) == GPIO.LOW:
-			print("wait to touch...")
 			epd.init(epd.lut_full_update)    
-            epd.Clear(0xFF)
+			epd.Clear(0xFF)
 			wait_image = Image.new('1', (epd.height, epd.width), 255)
-        	wait_draw = ImageDraw.Draw(wait_image)
-        	wait_draw.rectangle((10, 10, 100, 40), fill = 0)
-        	wait_draw.text((15, 15), "do something...", font = font18, fill = 255)
-        	epd.display(epd.getbuffer(wait_image))	
+			wait_draw = ImageDraw.Draw(wait_image)
+			wait_draw.rectangle((10, 10, 100, 40), fill = 0)
+			wait_draw.text((15, 15), "do something...", font = font18, fill = 255)
+			epd.display(epd.getbuffer(wait_image))	
 		else:
 			print ('you touched!')
 			epd_2in9.getDHTdata()
