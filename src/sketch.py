@@ -101,7 +101,7 @@ def note_submit():
         note_draw = ImageDraw.Draw(note_image)
         bmp = Image.open(os.path.join(picdir, '666.bmp'))
         bmp.thumbnail( (62.94,89.76) )
-        state_image.paste(bmp, (235,45))
+        note_image.paste(bmp, (235,45))
         #畫直線
         note_draw.rectangle((10, 10, 100, 40), fill = 0)
         note_draw.text((15, 15), "My NOTE", font = font18, fill = 255)
