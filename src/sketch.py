@@ -77,7 +77,7 @@ def state_submit():
         state_draw = ImageDraw.Draw(state_image)
         bmp = Image.open(os.path.join(picdir, '666.bmp'))
         bmp.thumbnail( (62.94,89.76) )
-        state_image.paste(bmp, (237,45))
+        state_image.paste(bmp, (235,45))
         #畫直線
         state_draw.rectangle((10, 10, 100, 40), fill = 0)
         state_draw.text((15, 15), "My STATE", font = font18, fill = 255)
@@ -97,11 +97,11 @@ def note_submit():
         epd.init(epd.lut_full_update)    
         epd.Clear(0xFF)
         #放插圖
-        note_image = Image.new('1', (epd.height, epd.width), 255)
-        note_draw = ImageDraw.Draw(note_image)
-        bmp = Image.open(os.path.join(picdir, '2in13d.bmp'))
-        bmp.thumbnail( (106,52) )
-        note_image.paste(bmp, (180,90))
+        state_image = Image.new('1', (epd.height, epd.width), 255)
+        state_draw = ImageDraw.Draw(state_image)
+        bmp = Image.open(os.path.join(picdir, '666.bmp'))
+        bmp.thumbnail( (62.94,89.76) )
+        state_image.paste(bmp, (235,45))
         #畫直線
         note_draw.rectangle((10, 10, 100, 40), fill = 0)
         note_draw.text((15, 15), "My NOTE", font = font18, fill = 255)
