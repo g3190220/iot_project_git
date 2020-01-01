@@ -99,10 +99,7 @@ def showtime():
         epd2in9.epdconfig.module_exit()
         exit()
 def close_epd():
-    epd = epd2in9.EPD()
-    logging.info("Clear...")
-    epd.init(epd.lut_full_update)
-    epd.Clear(0xFF)
+    print("no")
                 
     logging.info("Goto Sleep...")
     epd.sleep()
