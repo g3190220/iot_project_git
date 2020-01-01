@@ -64,10 +64,13 @@ def showtime():
         # 24h update 
         time_image = Image.new('1', (epd.height, epd.width), 255)
         time_draw = ImageDraw.Draw(time_image)
-        #paste thermometer image
+        #paste image
         logging.info("4.read bmp file on window")
+        bmp1 = Image.open(os.path.join(picdir, '456.bmp'))
         bmp = Image.open(os.path.join(picdir, '2in13d.bmp'))
         bmp.thumbnail( (106,52) )
+        bmp1.thumbnail( (305,97) )
+        time_image.paste(bmp1, (140,120))
         time_image.paste(bmp, (142,90))
         #date,week,time
         time_now = datetime.datetime.now()
@@ -103,7 +106,8 @@ def showtime():
                 time_draw.rectangle((10, 10, 120, 50), fill = 0)
                 time_draw.text((10, 15), time.strftime('%H:%M:%S'), font = font24, fill = 255)
                 newimage_3 = time_image.crop([10, 10, 120, 50])
-                time_image.paste(newimage_3, (10,15))  
+                time_image.paste(newimage_3, (10,15)) 
+                
                 epd.display(epd.getbuffer(time_image))
                 num=num+1
                  
