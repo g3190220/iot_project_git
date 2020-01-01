@@ -101,7 +101,7 @@ def showtime():
             # partial update
             logging.info("5.show time")
             while (num<9 and loop):
-                if GPIO.input(TouchPin) == GPIO.LOW:
+                if GPIO.input(TouchPin) == GPIO.HIGH:
                     loop=False
                 else:
                     time_draw.rectangle((10, 10, 120, 50), fill = 0)
