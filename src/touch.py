@@ -1,5 +1,5 @@
 import RPi.GPIO as GPIO
-
+import epd_2in9
 TouchPin = 27
 
 def setup():
@@ -11,10 +11,11 @@ def setup():
 def loop():
 	while True:
 		if GPIO.input(TouchPin) == GPIO.LOW:
-			print ('you touch')
+			epd_2in9.close_epd()
 			
 		else:
-			print ('no')
+			print ('you touch')
+			epd_2in9.showtime()
 			
 
 def destroy():
