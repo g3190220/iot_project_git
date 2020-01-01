@@ -101,13 +101,15 @@ def showtime():
             # partial update
             logging.info("5.show time")
             while (num<9 and loop):
-                print(loop)
-                time_draw.rectangle((10, 10, 120, 50), fill = 0)
-                time_draw.text((10, 15), time.strftime('%H:%M:%S'), font = font24, fill = 255)
-                newimage_3 = time_image.crop([10, 10, 120, 50])
-                time_image.paste(newimage_3, (10,15))  
-                epd.display(epd.getbuffer(time_image))
-                num=num+1
+                if GPIO.input(TouchPin) == GPIO.LOW:
+                    loop=False
+                else
+                    time_draw.rectangle((10, 10, 120, 50), fill = 0)
+                    time_draw.text((10, 15), time.strftime('%H:%M:%S'), font = font24, fill = 255)
+                    newimage_3 = time_image.crop([10, 10, 120, 50])
+                    time_image.paste(newimage_3, (10,1S5))  
+                    epd.display(epd.getbuffer(time_image))
+                    num=num+1
                  
         logging.info("Clear...")
         epd.init(epd.lut_full_update)
