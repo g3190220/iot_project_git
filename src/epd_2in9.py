@@ -36,7 +36,8 @@ def close_epd(channel):
     logging.info("Clear...")
     epd.init(epd.lut_full_update)
     epd.Clear(0xFF)
-    exit()
+    logging.info("Off??...")
+    #exit()
    
      
      
