@@ -66,10 +66,10 @@ def showtime():
         time_draw = ImageDraw.Draw(time_image)
         #paste image
         logging.info("4.read bmp file on window")
-        bmp1 = Image.open(os.path.join(picdir, '456.bmp'))
+        bmp1 = Image.open(os.path.join(picdir, '789.bmp'))
         bmp = Image.open(os.path.join(picdir, '2in13d.bmp'))
         bmp.thumbnail( (106,52) )
-        bmp1.thumbnail( (666.75,73) )
+        bmp1.thumbnail( (93.47,40.2) )
         time_image.paste(bmp1, (100,90))
         time_image.paste(bmp, (142,90))
         #date,week,time
