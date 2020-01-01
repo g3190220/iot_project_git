@@ -32,7 +32,8 @@ def getDHTdata():
         hum = round(hum)
         temp = round(temp, 1)
     return temp, hum
- def close_epd(channel):
+
+def close_epd(channel):
     global loop
     loop = False
     logging.info("Clear...")
