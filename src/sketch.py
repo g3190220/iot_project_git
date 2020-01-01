@@ -25,7 +25,6 @@ import traceback
 import json
 
 import doremi
-import epd_empty
 
 epd = epd2in9.EPD()
 font24 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 24)
