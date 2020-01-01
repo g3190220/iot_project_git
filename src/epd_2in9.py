@@ -41,7 +41,7 @@ def close_epd(channel):
     epd.init(epd.lut_full_update)
     epd.Clear(0xFF)
     GPIO.remove_event_detect(channel)
-    epd2in9.epdconfig.module_exit()
+   
          
 
 def showtime():
