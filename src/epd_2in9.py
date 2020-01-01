@@ -40,7 +40,7 @@ def close_epd(channel):
     epd = epd2in9.EPD()
     epd.init(epd.lut_full_update)
     epd.Clear(0xFF)
-    GPIO.remove_event_detect(TouchPin)
+    GPIO.cleanup()
          
 
 def showtime():
