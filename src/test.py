@@ -1,2 +1,0 @@
-import doremi
-doremi.doReMi()
