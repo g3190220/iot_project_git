@@ -32,6 +32,7 @@ def getDHTdata():
         temp = round(temp, 1)
     return temp, hum
 def close_epd(channel):
+    epd = epd2in9.EPD()
     logging.info("Clear...")
     epd.init(epd.lut_full_update)
     epd.Clear(0xFF)
