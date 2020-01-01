@@ -72,6 +72,7 @@ def showtime():
         bmp1.thumbnail( (130.9,56.28))
         time_image.paste(bmp1, (241,75))
         time_image.paste(bmp, (142,92))
+        time_draw.line([(135,epd.height-1), (epd.height-1, epd.width)],fill = 0, width = 3)
         #date,week,time
         time_now = datetime.datetime.now()
         date_string = time_now.strftime('%Y-%m-%d')
