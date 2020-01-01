@@ -103,7 +103,7 @@ def showtime():
             while (num<9 and loop):
                 if GPIO.input(TouchPin) == GPIO.LOW:
                     loop=False
-                else
+                else:
                     time_draw.rectangle((10, 10, 120, 50), fill = 0)
                     time_draw.text((10, 15), time.strftime('%H:%M:%S'), font = font24, fill = 255)
                     newimage_3 = time_image.crop([10, 10, 120, 50])
