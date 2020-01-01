@@ -24,6 +24,7 @@ def setup():
 def loop():
 	while True:
 		if GPIO.input(TouchPin) == GPIO.LOW:
+			epd = epd2in9.EPD()
 			print("wait to touch...")
 			wait_image = Image.new('1', (epd.height, epd.width), 255)
         	wait_draw = ImageDraw.Draw(wait_image)
