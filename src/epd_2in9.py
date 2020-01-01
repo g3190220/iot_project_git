@@ -30,7 +30,9 @@ def getDHTdata():
 def showtime():
     logging.basicConfig(level=logging.DEBUG)
     TouchPin = 27
-
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setup(TouchPin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+    
     try:
         logging.info("epd2in9 Demo")
         epd = epd2in9.EPD()
