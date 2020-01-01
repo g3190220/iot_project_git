@@ -113,8 +113,8 @@ def showtime():
         epd.init(epd.lut_full_update)
         epd.Clear(0xFF)
                                 
-        logging.info("Goto Sleep...")
-        epd.sleep()
+        #logging.info("Goto Sleep...")
+        #epd.sleep()
         
                     
     except IOError as e:
