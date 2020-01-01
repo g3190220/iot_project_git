@@ -100,6 +100,4 @@ def showtime():
         exit()
 def close_epd():
     print("no")
-                
-    logging.info("Goto Sleep...")
-    epd.sleep()
+            

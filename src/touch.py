@@ -15,6 +15,7 @@ def loop():
 			
 		else:
 			print ('you touch')
+			epd_2in9.getDHTdata()
 			epd_2in9.showtime()
 			
 
