@@ -32,12 +32,14 @@ def getDHTdata():
         temp = round(temp, 1)
     return temp, hum
 def close_epd(channel):
+     GPIO.add_event_detect(TouchPin, GPIO.RISING, callback=showtime, bouncetime=200)
      print("Touched!")
      epd = epd2in9.EPD()
      epd.init(epd.lut_full_update)
      epd.Clear(0xFF)
-     epd.sleep()
-     GPIO.add_event_detect(TouchPin, GPIO.RISING, callback=showtime, bouncetime=200)
+     while(True):
+        epd.sleep()
+     
 
 def showtime():
     logging.basicConfig(level=logging.DEBUG)
