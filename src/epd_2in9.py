@@ -33,13 +33,13 @@ def getDHTdata():
         temp = round(temp, 1)
     return temp, hum
  def close_epd(channel):
-     global loop
-     loop = False
-     logging.info("Clear...")
-     epd = epd2in9.EPD()
-     epd.init(epd.lut_full_update)
-     epd.Clear(0xFF)
-     GPIO.remove_event_detect(channel)
+    global loop
+    loop = False
+    logging.info("Clear...")
+    epd = epd2in9.EPD()
+    epd.init(epd.lut_full_update)
+    epd.Clear(0xFF)
+    GPIO.remove_event_detect(channel)
          
 
 def showtime():
