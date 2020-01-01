@@ -127,7 +127,7 @@ def control_led():
         alarm_image = Image.new('1', (epd.height, epd.width), 255)
         alarm_draw = ImageDraw.Draw(alarm_image)
         bmp = Image.open(os.path.join(picdir, '777.bmp'))
-        bmp.thumbnail( (123.95,90) )
+        bmp.thumbnail( (86.765,63) )
         alarm_image.paste(bmp, (50,50))
         #畫直線
         alarm_draw.text((15, 15),'You turn on your pi alarm!', font = font18, fill = 0)
