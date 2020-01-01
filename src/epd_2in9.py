@@ -69,8 +69,8 @@ def showtime():
         bmp1 = Image.open(os.path.join(picdir, '456.bmp'))
         bmp = Image.open(os.path.join(picdir, '2in13d.bmp'))
         bmp.thumbnail( (106,52) )
-        bmp1.thumbnail( (889,500) )
-        time_image.paste(bmp1, (130,90))
+        bmp1.thumbnail( (17.78,50) )
+        time_image.paste(bmp1, (140,90))
         time_image.paste(bmp, (142,90))
         #date,week,time
         time_now = datetime.datetime.now()
