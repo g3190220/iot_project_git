@@ -77,7 +77,7 @@ def state_submit():
         state_draw = ImageDraw.Draw(state_image)
         bmp = Image.open(os.path.join(picdir, '666.bmp'))
         bmp.thumbnail( (62.94,89.76) )
-        state_image.paste(bmp, (250,45))
+        state_image.paste(bmp, (237,45))
         #畫直線
         state_draw.rectangle((10, 10, 100, 40), fill = 0)
         state_draw.text((15, 15), "My STATE", font = font18, fill = 255)
