@@ -32,25 +32,21 @@ def getDHTdata():
         hum = round(hum)
         temp = round(temp, 1)
     return temp, hum
-def close_epd(channel):
-    global loop
-    loop = False
-    print(loop)
-    logging.info("Clear...")
-    epd = epd2in9.EPD()
-    logging.info("Clear...")
-    epd.init(epd.lut_full_update)
-    epd.Clear(0xFF)
-    
-   
-     
-     
+# def close_epd(channel):
+#     global loop
+#     loop = False
+#     print(loop)
+#     logging.info("Clear...")
+#     epd = epd2in9.EPD()
+#     logging.info("Clear...")
+#     epd.init(epd.lut_full_update)
+#     epd.Clear(0xFF)
+         
 
 def showtime():
     global loop
     logging.basicConfig(level=logging.DEBUG)
     
-
     try:
         logging.info("epd2in9 Demo")
         epd = epd2in9.EPD()
