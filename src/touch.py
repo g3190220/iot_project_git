@@ -20,7 +20,7 @@ def loop():
 def destroy():
 	GPIO.cleanup()                     # Release resource
 
-if _name_ == '_main_':     # Program start from here
+if __name__ == '__main__':     # Program start from here
 	setup()
 	try:
 		loop()
