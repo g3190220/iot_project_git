@@ -27,10 +27,6 @@ def loop():
 			print("wait to touch...")
 			wait_image = Image.new('1', (epd.height, epd.width), 255)
         	wait_draw = ImageDraw.Draw(wait_image)
-        	#bmp = Image.open(os.path.join(picdir, '2in13d.bmp'))
-        	#bmp.thumbnail( (106,52) )
-        	#note_image.paste(bmp, (180,90))
-        	#畫直線
         	wait_draw.rectangle((10, 10, 100, 40), fill = 0)
         	wait_draw.text((15, 15), "do something...", font = font18, fill = 255)
         	epd.display(epd.getbuffer(wait_image))
