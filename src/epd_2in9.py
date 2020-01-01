@@ -32,10 +32,15 @@ def getDHTdata():
         temp = round(temp, 1)
     return temp, hum
 def close_epd(channel):
-     logging.info("Closed showtime")
-     epd = epd2in9.EPD()
-     epd.init(epd.lut_full_update)
-     epd.Clear(0xFF)
+    logging.info("Turn off!")
+    epd = epd2in9.EPD()
+    epd.init(epd.lut_full_update)
+    epd.Clear(0xFF)
+                                
+    clear_image = Image.new('1', (epd.height, epd.width), 255)
+    clear_draw = ImageDraw.Draw(clear_image)
+    epd.display(epd.getbuffer(clear_image))
+    
 
    
      
