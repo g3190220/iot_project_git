@@ -97,8 +97,8 @@ def note_submit():
         epd.init(epd.lut_full_update)    
         epd.Clear(0xFF)
         #放插圖
-        state_image = Image.new('1', (epd.height, epd.width), 255)
-        state_draw = ImageDraw.Draw(state_image)
+        note_image = Image.new('1', (epd.height, epd.width), 255)
+        note_draw = ImageDraw.Draw(note_image)
         bmp = Image.open(os.path.join(picdir, '666.bmp'))
         bmp.thumbnail( (62.94,89.76) )
         state_image.paste(bmp, (235,45))
@@ -106,7 +106,7 @@ def note_submit():
         note_draw.rectangle((10, 10, 100, 40), fill = 0)
         note_draw.text((15, 15), "My NOTE", font = font18, fill = 255)
         #state_draw.line([(0, 12), (epd.width,12)],fill = 0, width = 3)
-        note_draw.text((10, 50), result, font = font18, fill = 0)
+        note_draw.text((10, 50), result, font = font24, fill = 0)
         epd.display(epd.getbuffer(note_image))
     return render_template('SmartNote.html')
 
