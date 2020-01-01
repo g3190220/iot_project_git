@@ -34,13 +34,6 @@ def getDHTdata():
     return temp, hum
 def close_epd(channel):
     loop=False
-    logging.info("Clear...")
-    epd = epd2in9.EPD()
-    logging.info("Clear...")
-    epd.init(epd.lut_full_update)
-    epd.Clear(0xFF)
-   
-     
      
 
 def showtime():
@@ -96,7 +89,7 @@ def showtime():
             num=0
             # partial update
             logging.info("5.show time")
-            while (num<9):
+            while (num<9 and loop):
                 time_draw.rectangle((10, 10, 120, 50), fill = 0)
                 time_draw.text((10, 15), time.strftime('%H:%M:%S'), font = font24, fill = 255)
                 newimage_3 = time_image.crop([10, 10, 120, 50])
