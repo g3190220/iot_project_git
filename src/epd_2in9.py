@@ -32,21 +32,20 @@ def getDHTdata():
         hum = round(hum)
         temp = round(temp, 1)
     return temp, hum
-# def close_epd(channel):
-#     global loop
-#     loop = False
-#     print(loop)
-#     logging.info("Clear...")
-#     epd = epd2in9.EPD()
-#     logging.info("Clear...")
-#     epd.init(epd.lut_full_update)
-#     epd.Clear(0xFF)
+ def close_epd(channel):
+     global loop
+     loop = False
+     logging.info("Clear...")
+     epd = epd2in9.EPD()
+     epd.init(epd.lut_full_update)
+     epd.Clear(0xFF)
+     GPIO.remove_event_detect(channel)
          
 
 def showtime():
     global loop
     logging.basicConfig(level=logging.DEBUG)
-    
+    GPIO.add_event_detect(TouchPin, GPIO.RISING, callback=close_epd, bouncetime=200)
     try:
         logging.info("epd2in9 Demo")
         epd = epd2in9.EPD()
@@ -80,7 +79,7 @@ def showtime():
         
         
         while loop:
-            print(loop)
+
             #溫溼度計
             temp, hum = getDHTdata()
             temp_val=str(temp)
@@ -96,16 +95,15 @@ def showtime():
             num=0
             # partial update
             logging.info("5.show time")
+
             while (num<9 and loop):
-                if GPIO.input(TouchPin) == GPIO.HIGH:
-                    loop=False
-                else:
-                    time_draw.rectangle((10, 10, 120, 50), fill = 0)
-                    time_draw.text((10, 15), time.strftime('%H:%M:%S'), font = font24, fill = 255)
-                    newimage_3 = time_image.crop([10, 10, 120, 50])
-                    time_image.paste(newimage_3, (10,15))  
-                    epd.display(epd.getbuffer(time_image))
-                    num=num+1
+                 
+                time_draw.rectangle((10, 10, 120, 50), fill = 0)
+                time_draw.text((10, 15), time.strftime('%H:%M:%S'), font = font24, fill = 255)
+                newimage_3 = time_image.crop([10, 10, 120, 50])
+                time_image.paste(newimage_3, (10,15))  
+                epd.display(epd.getbuffer(time_image))
+                num=num+1
                  
         logging.info("Clear...")
         epd.init(epd.lut_full_update)
