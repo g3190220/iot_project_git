@@ -18,6 +18,10 @@ import json
 import Adafruit_DHT
 import RPi.GPIO as GPIO
 
+TouchPin = 27
+GPIO.setmode(GPIO.BCM)
+GPIO.add_event_detect(TouchPin, GPIO.RISING, callback=close_epd, bouncetime=200)
+
 # get data from DHT sensor
 def getDHTdata():
     DHT22Sensor = Adafruit_DHT.DHT22
@@ -29,10 +33,8 @@ def getDHTdata():
     return temp, hum
 def showtime():
     logging.basicConfig(level=logging.DEBUG)
-    TouchPin = 27
-    GPIO.setmode(GPIO.BCM)
-    GPIO.setup(TouchPin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
     
+
     try:
         logging.info("epd2in9 Demo")
         epd = epd2in9.EPD()
@@ -66,38 +68,37 @@ def showtime():
         
         
         while(True):
-            logging.info("check if it was touched")
-            if GPIO.input(TouchPin) == GPIO.LOW:
-                #溫溼度計
-                temp, hum = getDHTdata()
-                temp_val=str(temp)
-                hum_val=str(hum)
+            
+            #溫溼度計
+            temp, hum = getDHTdata()
+            temp_val=str(temp)
+            hum_val=str(hum)
 
-                time_draw.rectangle((195, 85, 235, 20), fill = 255)
-                time_draw.text((144, 19), "Temp: "+temp_val+" *C", font = font18, fill = 0) 
-                time_draw.text((144, 55), "Hum : "+hum_val+" %", font = font18, fill = 0)
+            time_draw.rectangle((195, 85, 235, 20), fill = 255)
+            time_draw.text((144, 19), "Temp: "+temp_val+" *C", font = font18, fill = 0) 
+            time_draw.text((144, 55), "Hum : "+hum_val+" %", font = font18, fill = 0)
                         
-                newimage_1 = time_image.crop([195, 85, 235, 20])
-                time_image.paste(newimage_1, (144, 19))  
+            newimage_1 = time_image.crop([195, 85, 235, 20])
+            time_image.paste(newimage_1, (144, 19))  
 
-                num=0
-                # partial update
-                logging.info("5.show time")
-                while (num<9):
-                    time_draw.rectangle((10, 10, 120, 50), fill = 0)
-                    time_draw.text((10, 15), time.strftime('%H:%M:%S'), font = font24, fill = 255)
-                    newimage_3 = time_image.crop([10, 10, 120, 50])
-                    time_image.paste(newimage_3, (10,15))  
-                    epd.display(epd.getbuffer(time_image))
-                    num=num+1
-            else:           
-                logging.info("Clear...")
-                epd.init(epd.lut_full_update)
-                epd.Clear(0xFF)
+            num=0
+            # partial update
+            logging.info("5.show time")
+            while (num<9):
+                time_draw.rectangle((10, 10, 120, 50), fill = 0)
+                time_draw.text((10, 15), time.strftime('%H:%M:%S'), font = font24, fill = 255)
+                newimage_3 = time_image.crop([10, 10, 120, 50])
+                time_image.paste(newimage_3, (10,15))  
+                epd.display(epd.getbuffer(time_image))
+                num=num+1
+                 
+        logging.info("Clear...")
+        epd.init(epd.lut_full_update)
+        epd.Clear(0xFF)
                                 
-                logging.info("Goto Sleep...")
-                epd.sleep()
-                exit()
+        logging.info("Goto Sleep...")
+        epd.sleep()
+        
                     
     except IOError as e:
         logging.info(e)
@@ -106,9 +107,11 @@ def showtime():
         logging.info("ctrl + c:")
         epd2in9.epdconfig.module_exit()
         exit()
-def close_epd():
+def close_epd(channel):
+     print("Touched!")
      epd = epd2in9.EPD()
      epd.init(epd.lut_full_update)
      epd.Clear(0xFF)
      epd.sleep()
+     exit()
             
