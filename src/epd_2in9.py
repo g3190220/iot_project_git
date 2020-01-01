@@ -40,11 +40,11 @@ def close_epd(channel):
     epd = epd2in9.EPD()
     epd.init(epd.lut_full_update)
     epd.Clear(0xFF)
-    GPIO.cleanup()
          
 
 def showtime():
     global loop
+    loop=True
     logging.basicConfig(level=logging.DEBUG)
     GPIO.add_event_detect(TouchPin, GPIO.RISING, callback=close_epd, bouncetime=200)
     try:
