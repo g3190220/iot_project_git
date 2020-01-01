@@ -20,7 +20,7 @@ import RPi.GPIO as GPIO
 
 TouchPin = 27
 GPIO.setmode(GPIO.BCM)
-GPIO.add_event_detect(TouchPin, GPIO.RISING, callback=close_epd, bouncetime=200)
+
 
 # get data from DHT sensor
 def getDHTdata():
@@ -31,9 +31,17 @@ def getDHTdata():
         hum = round(hum)
         temp = round(temp, 1)
     return temp, hum
+def close_epd(channel):
+     print("Touched!")
+     epd = epd2in9.EPD()
+     epd.init(epd.lut_full_update)
+     epd.Clear(0xFF)
+     epd.sleep()
+     exit()
+
 def showtime():
     logging.basicConfig(level=logging.DEBUG)
-    
+    GPIO.add_event_detect(TouchPin, GPIO.RISING, callback=close_epd, bouncetime=200)
 
     try:
         logging.info("epd2in9 Demo")
@@ -107,11 +115,5 @@ def showtime():
         logging.info("ctrl + c:")
         epd2in9.epdconfig.module_exit()
         exit()
-def close_epd(channel):
-     print("Touched!")
-     epd = epd2in9.EPD()
-     epd.init(epd.lut_full_update)
-     epd.Clear(0xFF)
-     epd.sleep()
-     exit()
+
             
