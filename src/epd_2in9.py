@@ -20,6 +20,7 @@ import RPi.GPIO as GPIO
 
 TouchPin = 27
 GPIO.setmode(GPIO.BCM)
+loop=True
 
 
 # get data from DHT sensor
@@ -32,12 +33,12 @@ def getDHTdata():
         temp = round(temp, 1)
     return temp, hum
 def close_epd(channel):
+    loop=False
     logging.info("Clear...")
     epd = epd2in9.EPD()
     logging.info("Clear...")
     epd.init(epd.lut_full_update)
     epd.Clear(0xFF)
-    showtime.exit()
    
      
      
@@ -78,7 +79,7 @@ def showtime():
         fill = 0, width = 3)
         
         
-        while(True):
+        while loop:
             
             #溫溼度計
             temp, hum = getDHTdata()
