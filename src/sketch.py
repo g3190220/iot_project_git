@@ -139,6 +139,13 @@ def control_led():
            now_c=now.strftime("%-I:%M%P")
            if time_== now_c:
                 print("time's up!")
+                #放插圖
+                wakeup_image = Image.new('1', (epd.height, epd.width), 255)
+                wakeup_draw = ImageDraw.Draw(wakeup_image)
+                bmp = Image.open(os.path.join(picdir, '999.bmp'))
+                bmp.thumbnail( (128,108) )
+                wakeup_image.paste(bmp, (50,50))
+
                 wakeup_image = Image.new('1', (epd.height, epd.width), 255)
                 wakeup_draw = ImageDraw.Draw(wakeup_image)
                 wakeup_draw.text((15, 15),'Times up!!', font = font18, fill = 0)
