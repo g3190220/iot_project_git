@@ -34,8 +34,9 @@ def getDHTdata():
 def close_epd(channel):
      logging.info("Closed showtime")
      epd = epd2in9.EPD()
-     #epd.init(epd.lut_full_update)
+     epd.init(epd.lut_full_update)
      epd.Clear(0xFF)
+
    
      
      
