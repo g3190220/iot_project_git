@@ -11,14 +11,14 @@ SmartNote能夠清楚顯現承辦人現在的狀況，比如是暫時離開10分
 ### 步驟一、連接基本相關設備(墨水屏、touch sensor、DHT22/AM2302溫濕度感測器、蜂鳴器)
 樹梅派GPIO參考:https://pinout.xyz/pinout/pin4_5v_power<br>
 以下數字以BCM為主
-* 墨水屏:
+* 墨水屏:<br>
 參考資料:http://www.waveshare.net/wiki/2.9inch_e-Paper_Module<br>
 請對照參考資料網址的表格相對應連接<br>
-* touch sensor:
+* touch sensor:<br>
 參考資料:http://kookye.com/2017/06/01/design-a-touch-switch-through-a-raspberry-pi-board-and-digital-touch-sensor/<br>
-VCC:5V<br>
-SIG:27<br>
-GND:ground<br>
+VCC : 5V<br>
+SIG : 27<br>
+GND : ground<br>
 * 墨水屏:
 參考資料:http://www.waveshare.net/wiki/2.9inch_e-Paper_Module<br>
 請對照參考資料網址的表格相對應連接<br>
