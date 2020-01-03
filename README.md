@@ -37,12 +37,41 @@ GND ： ground<br>
 3. 去git可下載官方測試程式，執行墨水屏對應版本py檔(本專案版本為epd2in9.py)，若成功顯示畫面則代表安裝設定完成<br>
 ### 步驟三、顯示日期時間並結合溫溼度感測計之資料傳到墨水屏上顯示頁面
 * 顯示日期時間，且秒數為局部刷新<br>
-局部刷新的功能，大致邏輯是以每秒部分畫面剪下貼上的方式來執行，以下為相關程式碼擷取
+參考資料：官方的測試程式(epd2in9.py)<br>
+局部刷新的功能，大致邏輯是以每秒部分畫面剪下貼上的方式來執行，以下為相關程式碼擷取：
 ```python
 time_draw.rectangle((10, 10, 120, 50), fill = 0)
 time_draw.text((10, 15), time.strftime('%H:%M:%S'), font = font24, fill = 255)
 newimage_3 = time_image.crop([10, 10, 120, 50])
 time_image.paste(newimage_3, (10,15))
+```
+* 溫溼度感測計之資料傳到墨水屏上<br>
+參考資料：https://pimylifeup.com/raspberry-pi-humidity-sensor-dht22/<br>
+以下為相關程式碼擷取：
+```python
+# get data from DHT sensor
+def getDHTdata():
+    DHT22Sensor = Adafruit_DHT.DHT22
+    DHTpin = 4
+    hum, temp = Adafruit_DHT.read_retry(DHT22Sensor, DHTpin)
+    if hum is not None and temp is not None:
+        hum = round(hum)
+        temp = round(temp, 1)
+    return temp, hum 
+```
+
+```python
+#溫溼度計
+temp, hum = getDHTdata()
+temp_val=str(temp)
+hum_val=str(hum)
+
+time_draw.rectangle((195, 85, 235, 20), fill = 255)
+time_draw.text((144, 19), "Temp: "+temp_val+" *C", font = font18, fill = 0) 
+time_draw.text((144, 55), "Hum : "+hum_val+" %", font = font18, fill = 0)
+                        
+newimage_1 = time_image.crop([195, 85, 235, 20])
+time_image.paste(newimage_1, (144, 19))  
 ```
 
 
