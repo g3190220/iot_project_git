@@ -31,11 +31,13 @@ GND ： ground<br>
 
 
 ### 步驟二、安裝設定 2.9inch E-Ink display module
-參考資料:http://www.waveshare.net/wiki/2.9inch_e-Paper_Module<br>
+詳細指令參考資料:http://www.waveshare.net/wiki/2.9inch_e-Paper_Module<br>
 1. 開啟SPI接口<br>
-2. 安裝python套件<br>
-
-3. 下載測試程式<br>
+2. 重啟樹莓派<br>
+3. 安裝BCM2835<br> 
+4. 安装wiringPi<br>
+5. 安装所需Python套件(pip、pil、numpy、RPi.GPIO、spidev等等，詳細請看參考資料)<br>
+3. 去git可下載官方測試程式，執行若成功則代表墨水屏安裝完成<br>
 ### 步驟三、顯示日期時間並結合溫溼度感測計之資料傳到墨水屏上顯示頁面
 ### 步驟四、透過touch sensor來讓墨水屏顯示日期時間頁面或暫停此功能
 ### 步驟五、安裝FLASK
