@@ -122,9 +122,9 @@ ___
 * https://raspberrypi.readbook.tw/python-flask.html<br>
 * http://shumeipai.nxez.com/2018/07/03/video-streaming-web-server-with-flask.html<br>
 以下為相關程式碼：
-# get data from DHT sensor
+
 ```python
-#取得溫濕度資料方法
+# get data from DHT sensor
 def getDHTdata():
     DHT22Sensor = Adafruit_DHT.DHT22
     DHTpin = 4
