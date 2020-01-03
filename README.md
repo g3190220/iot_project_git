@@ -108,11 +108,41 @@ while True:
 from flask import Flask,flash, render_template,request,jsonify
 ```
 ### 步驟七、製作網頁鬧鐘，並將時間與樹梅派同步，並讓蜂鳴器與墨水屏同步提示
-* 網頁鬧鐘，主要是運用已有的套件jquery timepicker來做，以下為參考運用的程式碼<br>
-參考資料：
-
+參考資料：<br>
+* https://www.google.com/search?biw=1422&bih=642&ei=s0kPXoaJLsvEmAW4xYCwBQ&q=timepicker+git&oq=timep+git&gs_l=psy-ab.1.0.0i7i30l2j0i8i7i10i30l2j0i7i5i10i30.28557.29946..31887...0.0..0.61.320.6......0....1..gws-wiz.......0i7i10i30j0i13j0i13i10j0.pnN0HpEG4Rw<br>
+* https://github.com/aschepis/jquery-timepicker<br>
+___
+* 網頁鬧鐘，主要是運用已有的套件jquery timepicker來做<br>
+* 將設定時間傳回FLASK，墨水屏改變顯示畫面<br>
+* 當時間到墨水屏更顯示畫面，蜂鳴器也發出聲響<br>
+* 此方法詳細程式碼請看sketch.py裡的control_led()方法<br>
 
 ### 步驟八、將溫溼度的資料數值傳到網頁上顯示
-https://raspberrypi.readbook.tw/python-flask.html
-http://shumeipai.nxez.com/2018/07/03/video-streaming-web-server-with-flask.html
+參考資料：<br>
+* https://raspberrypi.readbook.tw/python-flask.html<br>
+* http://shumeipai.nxez.com/2018/07/03/video-streaming-web-server-with-flask.html<br>
+以下為相關程式碼：
+# get data from DHT sensor
+```python
+#取得溫濕度資料方法
+def getDHTdata():
+    DHT22Sensor = Adafruit_DHT.DHT22
+    DHTpin = 4
+    hum, temp = Adafruit_DHT.read_retry(DHT22Sensor, DHTpin)
+    if hum is not None and temp is not None:
+        hum = round(hum)
+        temp = round(temp, 1)
+    return temp, hum
+#將資料以物件的方式傳回網頁
+@app.route('/t_h_data/')
+def t_h_submit():
+    timeNow = time.asctime( time.localtime(time.time()) )
+    temp, hum = getDHTdata()
+    templateData = {
+        'time': timeNow,
+        'temp': temp,
+        'hum' : hum
+    }
+    return render_template('SmartNote.html',**templateData)
+```
 ### 完成上述步驟，即可完成本次專案之功能。
