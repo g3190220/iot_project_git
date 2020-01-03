@@ -27,9 +27,6 @@ NC ： 不用接<br>
 GND ： ground<br>
 * 蜂鳴器：<br>
 接在麵包板上，正極pin腳連到12
-
-
-
 ### 步驟二、安裝設定 2.9inch E-Ink display module
 詳細指令參考資料:http://www.waveshare.net/wiki/2.9inch_e-Paper_Module<br>
 1. 開啟SPI接口<br>
@@ -37,8 +34,18 @@ GND ： ground<br>
 3. 安裝BCM2835<br> 
 4. 安装wiringPi<br>
 5. 安装所需Python套件(pip、pil、numpy、RPi.GPIO、spidev等等，詳細請看參考資料)<br>
-3. 去git可下載官方測試程式，執行若成功則代表墨水屏安裝完成<br>
+3. 去git可下載官方測試程式，執行墨水屏對應版本py檔(本專案版本為epd2in9.py)，若成功顯示畫面則代表安裝設定完成<br>
 ### 步驟三、顯示日期時間並結合溫溼度感測計之資料傳到墨水屏上顯示頁面
+* 顯示日期時間，且秒數為局部刷新<br>
+局部刷新的功能，大致邏輯是以每秒部分畫面剪下貼上的方式來執行，以下為相關程式碼擷取
+```python
+time_draw.rectangle((10, 10, 120, 50), fill = 0)
+time_draw.text((10, 15), time.strftime('%H:%M:%S'), font = font24, fill = 255)
+newimage_3 = time_image.crop([10, 10, 120, 50])
+time_image.paste(newimage_3, (10,15))
+```
+
+
 ### 步驟四、透過touch sensor來讓墨水屏顯示日期時間頁面或暫停此功能
 ### 步驟五、安裝FLASK
 ### 步驟六、製作網頁，並運用FLASK技術作網頁後端伺服器
