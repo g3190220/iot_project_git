@@ -8,8 +8,32 @@ SmartNote能夠清楚顯現承辦人現在的狀況，比如是暫時離開10分
 * Touch 觸摸感測器模組 1路觸摸開關傳感器  *1
 * DHT22/AM2302溫濕度感測器 *1
 * 蜂鳴器 *1
-### 步驟一、連接相關設備(墨水屏、touch sensor、DHT22/AM2302溫濕度感測器、蜂鳴器)
+### 步驟一、連接基本相關設備(墨水屏、touch sensor、DHT22/AM2302溫濕度感測器、蜂鳴器)
+樹梅派GPIO參考:https://pinout.xyz/pinout/pin4_5v_power<br>
+以下數字以BCM為主
+* 墨水屏:
+參考資料:http://www.waveshare.net/wiki/2.9inch_e-Paper_Module<br>
+請對照參考資料網址的表格相對應連接<br>
+* touch sensor:
+參考資料:http://kookye.com/2017/06/01/design-a-touch-switch-through-a-raspberry-pi-board-and-digital-touch-sensor/<br>
+VCC:5V<br>
+SIG:27<br>
+GND:ground<br>
+* 墨水屏:
+參考資料:http://www.waveshare.net/wiki/2.9inch_e-Paper_Module<br>
+請對照參考資料網址的表格相對應連接<br>
+* 墨水屏:
+參考資料:http://www.waveshare.net/wiki/2.9inch_e-Paper_Module<br>
+請對照參考資料網址的表格相對應連接<br>
+
+
+
 ### 步驟二、安裝設定 2.9inch E-Ink display module
+參考資料:http://www.waveshare.net/wiki/2.9inch_e-Paper_Module<br>
+1. 開啟SPI接口<br>
+2. 安裝python套件<br>
+
+3. 下載測試程式<br>
 ### 步驟三、顯示日期時間並結合溫溼度感測計之資料傳到墨水屏上顯示頁面
 ### 步驟四、透過touch sensor來讓墨水屏顯示日期時間頁面或暫停此功能
 ### 步驟五、安裝FLASK
