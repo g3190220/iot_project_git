@@ -76,8 +76,37 @@ time_image.paste(newimage_1, (144, 19))
 
 
 ### 步驟四、透過touch sensor來讓墨水屏顯示日期時間頁面或暫停此功能
-### 步驟五、安裝FLASK
-### 步驟六、製作網頁，並運用FLASK技術作網頁後端伺服器
-### 步驟七、將使用者輸入的資料從前端傳到FLASK，再透過墨水屏顯示
-### 步驟八、製作網頁鬧鐘，並將時間與樹梅派同步，並讓蜂鳴器與墨水屏同步提示
+參考資料：https://www.itread01.com/content/1548642622.html
+1. 透過判斷touch sensor的高低電位來判斷是否碰觸，碰觸後觸發顯示日期時間的方法<br>
+```python
+while True:
+		if GPIO.input(TouchPin) == GPIO.LOW:
+			print("wait to touch...")
+				
+		else:
+			print ('you touched!')
+			epd_2in9.getDHTdata()
+			epd_2in9.showtime()
+```
+2. 方法執行後，作add_event_detect，當判斷到有電位差便會執行close_epd的方法，使本來迴圈暫停<br>
+3. close_epd的方法裡要有remove_event_detect，要不然無法重複啟動或關閉<br>
+*詳細程式碼請看epd_2in9.py
+
+### 步驟五、製作網頁，並運用FLASK技術作網頁後端伺服器
+參考資料：<br>
+* https://kknews.cc/zh-tw/tech/yy6pg5j.html<br>
+* https://zhuanlan.zhihu.com/p/49748475
+### 步驟六、將使用者輸入的資料從前端傳到FLASK，再透過墨水屏顯示
+參考資料：<br>
+* https://www.maxlist.xyz/2019/03/17/flask-get-post/<br>
+* https://www.lagou.com/lgeduarticle/70803.html<br>
+* 需import以下Python套件
+```python
+from flask import Flask,flash, render_template,request,jsonify
+```
+* 主要是以post方式從前端傳回flask
+
+### 步驟七、製作網頁鬧鐘，並將時間與樹梅派同步，並讓蜂鳴器與墨水屏同步提示
+### 步驟八、將溫溼度的資料數值傳到網頁上顯示
+https://raspberrypi.readbook.tw/python-flask.html
 ### 完成上述步驟，即可完成本次專案之功能。
