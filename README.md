@@ -2,10 +2,10 @@
 ### 構想
 SmartNote能夠清楚顯現承辦人現在的狀況，比如是暫時離開10分鐘、或是下午才上班、甚至是今天請假等等資訊，都能夠讓來辦公室的人，比較不會因沒找到人而感到迷茫，不知道應該繼續等或著是改天再來辦事情。只要擁有「SmartNote」這項兼具美觀性及實用性的工具，上述的情況便能迎刃而解。而且，平常在座位上時，也可以當作時鐘、鬧鐘來使用，上面顯示今日的日期時間、天氣；甚至可以當作臨時便條，隨手記下一些事情來提醒自己，所以這是一項非常適合白領，很便利的辦公室智慧小物。使用者隨時都能夠自己用手機更改欲顯示的資訊，利人利己，也讓工作更有效率。
 <br>額外小功能：網頁鬧鐘(網頁設定時間，時間到了連接的蜂鳴器會發出聲響提醒，墨水屏也會顯示畫面提示)<br>
-* 主要構想參考資料：<br>
+##### 主要構想參考資料：<br>
 * https://www.jianshu.com/p/11de23140d10<br>
 * https://blog.csdn.net/kim5659/article/details/102835977<br>
-* 影片連結<br>
+##### 影片連結<br>
 * https://youtu.be/6l6oUawLiOg<br>
 ### 材料
 * Raspberry pi *1
@@ -17,7 +17,7 @@ SmartNote能夠清楚顯現承辦人現在的狀況，比如是暫時離開10分
 樹梅派GPIO參考:https://pinout.xyz/pinout/pin4_5v_power<br>
 以下數字以BCM為主
 * 墨水屏：<br>
-參考資料:http://www.waveshare.net/wiki/2.9inch_e-Paper_Module<br>
+參考資料：http://www.waveshare.net/wiki/2.9inch_e-Paper_Module<br>
 請對照參考資料網址的表格相對應連接<br>
 * touch sensor:<br>
 參考資料:http://kookye.com/2017/06/01/design-a-touch-switch-through-a-raspberry-pi-board-and-digital-touch-sensor/<br>
