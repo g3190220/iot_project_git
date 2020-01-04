@@ -5,7 +5,7 @@ SmartNote能夠清楚顯現承辦人現在的狀況，比如是暫時離開10分
 ##### 主要構想參考資料：<br>
 * https://www.jianshu.com/p/11de23140d10<br>
 * https://blog.csdn.net/kim5659/article/details/102835977<br>
-##### 成果影片連結<br>
+##### 成果影片連結：<br>
 * https://youtu.be/6l6oUawLiOg<br>
 ### 材料
 * Raspberry pi *1
